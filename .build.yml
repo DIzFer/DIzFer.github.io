@@ -1,0 +1,13 @@
+image: alpine/edge
+oauth: pages.sr.ht/PAGES:RW
+packages:
+  - hut
+environment:
+  site: mccrando.zurdo.si
+tasks:
+- package: |
+    cd mccmissionrando
+    tar -cvz . > ../site.tar.gz
+- upload: |
+    hut pages publish -d $site site.tar.gz
+
