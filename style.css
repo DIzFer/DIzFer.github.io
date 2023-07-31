@@ -1,0 +1,123 @@
+@media (min-width: 768px) {
+	body > * {
+		max-width: 90vw;
+	}
+}
+@media (min-width: 1024px) {
+	body > * {
+		max-width: 80vw;
+	}
+}
+@media (min-width: 1400px) {
+	body > * {
+		max-width: 1200px;
+	}
+}
+:root {
+	--text: black;
+	--background: #bbbab6;
+	--accent: #e9e9e9;
+}
+@media (prefers-color-scheme: dark) {
+	:root {
+		--text: #e9e9e9;
+		--background: #0f1f38;
+		--accent: #2c7ee2;
+	}
+	fieldset {
+		background-image: unset !important;
+	}
+}
+@media (prefers-reduced-motion: no-preference) and (update: fast) and (min-width: 768px) {
+	* {
+		transition-property: all;
+		transition-duration: .2s;
+	}
+}
+main, section, fieldset, button {
+	box-sizing: border-box;
+}
+main {
+	display: flex;
+	flex-direction: column;
+}
+body > * {
+	width: 100%;
+}
+fieldset {
+	border: 0;
+	margin: 0;
+	background-image: linear-gradient(0, transparent, #ffffff88);
+	width: 100%;
+	border-top: 1px solid var(--accent) !important;
+}
+fieldset, .column {
+	display: grid;
+	grid-auto-rows: auto;
+	grid-template-columns: 1fr 1fr;
+}
+.games-grid {
+	grid-template-columns: 1fr 1fr 1fr;
+}
+.games-grid > legend {
+	grid-area: span 1 / span 3;
+}
+fieldset > div {
+	align-items: center;
+}
+input {
+	border-radius: 0;
+	border: 0;
+	margin: .5em;
+	justify-self: start;
+}
+input[type="number"] {
+	width: 2.5em;
+	font-size: 1.2em;
+}
+input[type="text"] {
+	width: 24em;
+	padding: .5em;
+}
+input[type="checkbox"], input[type="radio"] {
+	width: 1.5em;
+	height: 1.5em;
+}
+body {
+	background-color: var(--background);
+	color: var(--text);
+	font-family: sans-serif;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+legend {
+	float: left;
+	font-size: 1.6em;
+	grid-area: span 1 / span 2;
+}
+label {
+	font-size: 1.2em;
+	justify-self: end;
+}
+legend,label,h1,h2,button {
+	font-variant: small-caps;
+}
+legend,label,h1,h2 {
+	align-self: center;
+}
+button, a#download {
+	font-size: 1.2em;
+	border-radius: 0;
+	border: 0;
+	border-left: 3px solid white;
+	padding: .5em;
+	background-color: #e9e9e925;
+	text-align: left;
+	color: var(--text);
+	text-decoration: none;
+}
+button:hover, a#download:hover {
+	background-color: #e9e9e980;
+	cursor: pointer;
+}

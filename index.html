@@ -5,6 +5,7 @@
 		<script src="/functions.js"></script>
 		<script src="/settings.js"></script>
 		<script src="/index.js" defer></script>
+		<link rel="stylesheet" href="/style.css" />
 	</head>
 	<body>
 		<h1>Halo: The Master Mission Rando</h1>
@@ -14,51 +15,55 @@
 		</button>
 		<main>
 			<fieldset>
-				<legend>Playlist naming settings</legend>
+				<legend><label for="playlistTitle">Playlist name</label></legend>
+				<label for="playlistTitle">Title for this playlist set</label>
 				<input id="playlistTitle" type="text" value="Randomized Playlist"/>
-				<label for="playlistTitle">Title for this playlist set.</label>
 			</fieldset>
 
 			<fieldset>
 				<legend>
 					General rando settings
 				</legend>
-				<input id="missionCount" type="number" min="1"/>
 				<label for="missionCount">How many missions do you want</label>
-				<input id="playlistCount" type="number" min="1"/>
+				<input id="missionCount" type="number" min="1"/>
 				<label for="playlistCount">How many playlists do you want</label>
-				<input id="excludeCutscenes" type="checkbox"/>
+				<input id="playlistCount" type="number" min="1"/>
 				<label for="excludeCutscenes" title="Exclude The Heretic and The Armory from H2, Arrival and Epilogue from H3, Prepare to Drop and Epilogue from ODST, Noble Actual, the credits, and Lone Wolf from Reach, and Prologue and Epilogue from H4">Exclude cutscenes/missions without combat?</label>
-				<input id="allowDupes" type="checkbox" false/>
+				<input id="excludeCutscenes" type="checkbox"/>
 				<label for="allowDupes" title="There's a chance this results in a playlist that exclusively contains runs of The Library; you've been warned">Allow the same mission to appear more than once. This allows you to make playlists longer than the sum of missions from the selected games.</label>
+				<input id="allowDupes" type="checkbox" false/>
 			</fieldset>
-
 			<fieldset>
 				<legend>Difficulty settings</legend>
-				<input name="difficulty" id="easy" value="_campaign_difficulty_level_easy" type="radio"/>
 				<label for="easy">Easy</label>
-				<input name="difficulty" id="normal" value="_campaign_difficulty_level_normal" type="radio"/>
+				<input name="difficulty" id="easy" value="_campaign_difficulty_level_easy" type="radio"/>
 				<label for="normal">Normal</label>
-				<input name="difficulty" id="heroic" value="_campaign_difficulty_level_hard" type="radio"/>
+				<input name="difficulty" id="normal" value="_campaign_difficulty_level_normal" type="radio"/>
 				<label for="heroic">Heroic</label>
-				<input name="difficulty" id="legendary" value="_campaign_difficulty_level_impossible" type="radio"/>
+				<input name="difficulty" id="heroic" value="_campaign_difficulty_level_hard" type="radio"/>
 				<label for="legendary">Legendary</label>
+				<input name="difficulty" id="legendary" value="_campaign_difficulty_level_impossible" type="radio"/>
 			</fieldset>
-
-			<fieldset>
+			<fieldset class="games-grid">
 				<legend>Games to include</legend>
-				<input id="Halo1" type="checkbox"/>
-				<label for="Halo1">Halo CE</label>
-				<input id="Halo2" type="checkbox"/>
-				<label for="Halo2">Halo 2</label>
-				<input id="Halo3" type="checkbox"/>
-				<label for="Halo3">Halo 3</label>
-				<input id="Halo3ODST" type="checkbox"/>
-				<label for="Halo3ODST">Halo 3: ODST</label>
-				<input id="HaloReach" type="checkbox"/>
-				<label for="HaloReach">Halo Reach</label>
-				<input id="Halo4" type="checkbox"/>
-				<label for="Halo4">Halo 4</label>
+				<div class="column">
+					<label for="Halo1">Halo CE</label>
+					<input id="Halo1" type="checkbox"/>
+					<label for="Halo2">Halo 2</label>
+					<input id="Halo2" type="checkbox"/>
+				</div>
+				<div class="column">
+					<label for="Halo3">Halo 3</label>
+					<input id="Halo3" type="checkbox"/>
+					<label for="Halo3ODST">Halo 3: ODST</label>
+					<input id="Halo3ODST" type="checkbox"/>
+				</div>
+				<div class="column">
+					<label for="HaloReach">Halo Reach</label>
+					<input id="HaloReach" type="checkbox"/>
+					<label for="Halo4">Halo 4</label>
+					<input id="Halo4" type="checkbox"/>
+				</div>
 			</fieldset>
 			<button onclick="generatePlaylists()">
 				Generate
