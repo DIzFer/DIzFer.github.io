@@ -67,5 +67,68 @@
 				Download missionplaylistdb.xml
 			</a>
 		</main>
+		<section>
+			<h2>What is this?</h2>
+			<p>Halo: MCC has Campaign Playlists where you can play predefined missions from the six games in orders different to the actual campaigns, sometimes switching from one game to another.</p>
+			<p>This website hijacks this feature to let you play randomly selected missions.</p>
+
+			<h2>How does this work?</h2>
+			<p>In a normal MCC install, you can find <code>/Data/careerdb/missionplaylistdb.xml</code>. This file contains the default playlists and is surprisingly readable. This rando will generate a replacement file with the randomized playlists.</p>
+			<p>For now, this completely removes every single playlist (you will get an error if you try to look at single-game playlists), and puts every random playlist in the Cross-game section of the menu. While this can be improved, it's very low priority.</p>
+
+			<h2>How do I use it?</h2>
+			<p>Tweak settings, press [Generate]<!-- TODO: there's markup for this isn't it-->, and download the file. You'll need to replace the default file, so be sure to either make a backup or remember to use the "Verify integrity of game files" function in Steam.<!-- TODO: double check how to do this with xbox launcher--></p>
+			<p>You can generate multiple sets of playlists with different settings and names; until you refresh the page, it all gets added to the same <code>missionplaylistdb.xml</code>.</p>
+			<p>Additionally, although I've not yet tested this, you should be able to play these in co-op without anti-cheat as long as all participants are using the exact same file.</p>
+
+			<h2>What do the settings mean?</h2>
+			<p><ul>
+				<li>You can set the playlist name; this will be displayed in the menu</li>
+				<li>You can generate multiple playlists with the selected settings, each with the given mission count per playlist</li>
+				<li>By default, this excludes missions that don't include combat. The full list of excluded missions is as follows:
+					<ul>
+						<li>Halo 2: The Heretic (initial cutscene) and The Armory (tutorial and exposition)</li>
+						<li>Halo 3: Arrival (initial cutscene) and Epilogue (ending cutscene)</li>
+						<li>ODST: Prepare to Drop (initial cutscene) and Epilogue (ending cutscene)</li>
+						<li>Reach: Noble Actual (initial cutscene), the credits cutscene, and Lone Wolf (final mission which ends on death)</li>
+						<li>Halo 4: Prologue (initial cutscene) and Epilogue (ending cutscene)</li>
+					</ul></li>
+					<li>
+						By default the rando cannot use the same mission twice in the same playlist. You can force allow duplicates, which unlocks silly things like very very long playlists, or <del>Halo Infinite: 2001 Edition</del> five consecutive runs of CE's Halo.</li>
+					<li>
+						You can select a difficulty for all missions of a given set. For example, you can generate 3 five-mission playlists in legendary, then 1 fifteen-mission playlist in normal.</li>
+					<li>You can choose to include only specific games in the pool</li>
+			</ul>
+			<p>All settings are saved in the URL, so you can save the permalink to your setup</p>
+
+			<h2>Is this done?</h2>
+			<p>Hell no! This is what I currently plan on adding, in rough order of priority:</p>
+			<ul>
+				<li>Randomizing difficulty (so a single playlist can include multiple difficulties)</li>
+				<li>Filtering specific missions instead of just games plus the cutscenes preset (expect "vehicular mayhem" presets, or "flood rando", or "floodless", like the default playlists)</li>
+				<li>💀💀💀💀💀💀
+					<ul>
+						<li>
+							Random and static selection (as with difficulty)
+						</li>
+						<li>
+							Optional carryover (think firefight: if a skull is enabled in one mission, it stays on until the playlist ends, gaining skulls as you progress)
+						</li>
+						<li>
+							Exclusion of specific skulls (go away iron nobody likes you)
+						</li>
+					</ul>
+				</li>
+				<li>Mombasa Streets only exists once. The feature required for implementing the multiple versions of it (like the default "Street Smart" playlist) also unlocks rally points (used, for example, in the "Off your feet" Reach playlist).</li>
+				<li>The Classic Rando Feature™: daily/weekly seeds!</li>
+				<li>Generate a missionplaylistdb that doesn't clobber the default playlists. Not really hard, just want to keep the xml files clean and readable until everything works 100%</li>
+			</ul>
+			<p>Additionally, there's a couple of longshot features that I'd like to add but aren't necessarily possible:</p>
+			<ul>
+				<li>Spartan Ops. These should behave exactly like a campaign mission.</li>
+				<li>Firefight. Limited in length, optionally with infinite lives (so you can't just skip it by dying five times as soon as it boots)</li>
+				<li>Custom/modded campaign maps</li>
+			</ul>
+		</section>
 	</body>
 </html>
