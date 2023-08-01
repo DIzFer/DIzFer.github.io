@@ -11,7 +11,7 @@ const FFS_XML_FIX_LIST = {
 	"playlist": "Playlist",
 	"maplist": "MapList",
 	"<map": "<Map",
-	"></map>": "/>",
+	"</map>": "</Map>",
 	"diffid=": "diffID=",
 	"<halo": "<Halo",
 	"</halo": "</Halo",
