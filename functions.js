@@ -56,6 +56,14 @@ function shuffleMissionList(missionList) {
 	return missionList;
 }
 
+function listSkulls() {
+	var skullsList = [];
+	careerdb.querySelectorAll("Skulls Skull").forEach(skull => skullsList.includes(skull.id) ? null : skullsList.push(skull.id));
+	console.log("skulls retrieved");
+	console.log(skullsList);
+	return skullsList;
+}
+
 function prepareXML(xmldata) {
 	var serializer = new XMLSerializer();
 	var xmltext = serializer.serializeToString(xmldata);

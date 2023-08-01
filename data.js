@@ -19,6 +19,8 @@ const FFS_XML_FIX_LIST = {
 	"</Haloreach": "</HaloReach",
 	"<Halo3odst": "<Halo3ODST",
 	"</Halo3odst": "</Halo3ODST",
+	"skulllist": "SkullList",
+	"skull": "Skull",
 };
 
 const CUTSCENES = [
@@ -49,4 +51,5 @@ const HUMANIZER_OBJECT = {
 	"cutscenes": "Cutscenes",
 	"allowDupes": "Dupes allowed",
 	"noDupes": "No Dupes",
+	"skulls": "With skulls",
 }

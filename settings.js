@@ -27,6 +27,7 @@ function readSettings() {
 		defaultSettings.set("excludeCutscenes", true);
 		defaultSettings.set("allowDupes", false);
 		defaultSettings.set("difficulty", "legendary");
+		defaultSettings.set("skulls", false);
 		defaultSettings.set("Halo1", true);
 		defaultSettings.set("Halo2", true);
 		defaultSettings.set("Halo3", true);
