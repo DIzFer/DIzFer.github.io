@@ -28,6 +28,14 @@ function readSettings() {
 		defaultSettings.set("allowDupes", false);
 		defaultSettings.set("difficulty", "legendary");
 		defaultSettings.set("skulls", false);
+		defaultSettings.set("acrophobia", true);
+		defaultSettings.set("bandanna", true);
+		defaultSettings.set("scarab", true);
+		defaultSettings.set("iron", false);
+		defaultSettings.set("foreign", false);
+		defaultSettings.set("jacked", false);
+		defaultSettings.set("funeral", true);
+		defaultSettings.set("angy", true);
 		defaultSettings.set("Halo1", true);
 		defaultSettings.set("Halo2", true);
 		defaultSettings.set("Halo3", true);
