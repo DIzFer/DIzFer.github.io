@@ -22,8 +22,8 @@ function readSettings() {
 		console.log("restoring default settings");
 		var defaultSettings = new URLSearchParams;
 		defaultSettings.set("playlistTitle", "Randomized playlist");
-		defaultSettings.set("missionCount", 10);
-		defaultSettings.set("playlistCount", 1);
+		defaultSettings.set("missionCount", 7);
+		defaultSettings.set("playlistCount", 3);
 		defaultSettings.set("excludeCutscenes", true);
 		defaultSettings.set("allowDupes", false);
 		defaultSettings.set("difficulty", "legendary");
