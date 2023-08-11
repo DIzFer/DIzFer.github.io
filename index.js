@@ -70,12 +70,10 @@ function generatePlaylists() {
 			switch (skullMode) {
 				case "randomSkulls":
 					var skullList = document.createElement("SkullList");
-					listSkulls().forEach(skull => {
-						if (Math.random() < .2) {
-							var skullElement = document.createElement("Skull");
-							skullElement.id = skull;
-							skullList.appendChild(skullElement);
-						}
+					listSkulls(true).forEach(skull => {
+						var skullElement = document.createElement("Skull");
+						skullElement.id = "_skull_" + skull;
+						skullList.appendChild(skullElement);
 					})
 					missionElement.appendChild(skullList);
 					break;
@@ -83,7 +81,7 @@ function generatePlaylists() {
 					var skullList = document.createElement("SkullList");
 					listSkulls().forEach(skull => {
 						var skullElement = document.createElement("Skull");
-						skullElement.id = skull;
+						skullElement.id = "_skull_" + skull;
 						skullList.appendChild(skullElement);
 					})
 					missionElement.appendChild(skullList);

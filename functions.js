@@ -70,10 +70,18 @@ function insertSkullControls() {
 	};
 }
 
-function listSkulls() {
+function listSkulls(random = false) {
 	var skullsList = [];
 	document.querySelectorAll(".skullContainer input").forEach(checkbox => {
-		checkbox.checked ? skullsList.push("_skull_" + checkbox.id) : null;
+		if (checkbox.checked) {
+			if (random) {
+				if (Math.random() < .2) {
+					skullsList.push(checkbox.id);
+				}
+			} else {
+				skullsList.push(checkbox.id);
+			}
+		}
 	});
 	return skullsList;
 }
