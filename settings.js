@@ -36,6 +36,7 @@ function readSettings() {
 		defaultSettings.set("jacked", false);
 		defaultSettings.set("funeral", true);
 		defaultSettings.set("angy", true);
+		defaultSettings.set("blind", false);
 		defaultSettings.set("Halo1", true);
 		defaultSettings.set("Halo2", true);
 		defaultSettings.set("Halo3", true);

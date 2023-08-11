@@ -61,4 +61,5 @@ const HUMANIZER_OBJECT = {
 	"noJacked": "No Jacked",
 	"noFuneral": "No Grunt Funeral",
 	"noAngy": "No SO... ANGRY...",
+	"noBlind": "No Blind",
 }

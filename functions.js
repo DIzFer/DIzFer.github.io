@@ -68,6 +68,7 @@ function listSkulls() {
 	document.querySelector('#jacked').checked ? null : skullsList.splice(skullsList.indexOf('_skull_jacked'), 1);
 	document.querySelector('#funeral').checked ? null : skullsList.splice(skullsList.indexOf('_skull_grunt_funeral'), 1);
 	document.querySelector('#angy').checked ? null : skullsList.splice(skullsList.indexOf('_skull_so_angry'), 1);
+	document.querySelector('#blind').checked ? null : skullsList.splice(skullsList.indexOf('_skull_blind'), 1);
 	console.log(skullsList);
 	return skullsList;
 }
