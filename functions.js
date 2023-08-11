@@ -4,7 +4,7 @@ function reset() {
 }
 
 function parseCareerDB() {
-	cachedCareerDB = localStorage.getItem("careerdb");
+	const cachedCareerDB = localStorage.getItem("careerdb");
 	if (cachedCareerDB !== null) {
 		const parser = new DOMParser();
 		careerdb = parser.parseFromString(cachedCareerDB, "text/xml");
