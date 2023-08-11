@@ -6,6 +6,58 @@ const GAMES = [
 	"HaloReach",
 	"Halo4"
 ];
+
+const SKULLS = {
+	"OP_SKULLS": [
+		"bandanna",
+		"boots_off_the_ground",
+		"scarab"
+	],
+	"FRUSTRATING_SKULLS": [
+		"blind",
+		"famine",
+		"recession",
+	],
+	"DANGEROUS_SKULLS": [
+		"foreign",
+		"grunt_funeral",
+		"iron",
+		"jacked",
+		"so_angry",
+	],
+	"FUN_SKULLS": [
+		"grunt_birthday_party",
+		"iwhbyd",
+		"prophet_birthday_party",
+	],
+	"MISC_SKULLS": [
+		"anger",
+		"black_eye",
+		"boom",
+		"catch",
+		"eye_patch",
+		"fog",
+		"ghost",
+		"malfunction",
+		"mythic",
+		"pinata",
+		"sputnik",
+		"thats_just_wrong",
+		"thunderstorm",
+		"tough_luck",
+		"assassins",
+		"bonded_pair",
+		"envy",
+		"feather",
+		"masterblaster",
+		"streaking",
+		"swarm",
+		"they_come_back",
+		"cowbell",
+		"tilt"
+	]
+};
+
 const FFS_XML_FIX_LIST = {
 	"crosstitle": "CrossTitle",
 	"playlist": "Playlist",

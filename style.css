@@ -55,9 +55,21 @@ fieldset, .column {
 	display: grid;
 	grid-auto-rows: auto;
 	grid-template-columns: 1fr 1fr;
+	align-content: start;
 }
 .games-grid {
 	grid-template-columns: 1fr 1fr 1fr;
+}
+.skullContainer > label:first-of-type {
+	grid-area: span 1 / span 2;
+}
+#MISC_SKULLS {
+	grid-area: span 1 / span 2;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+#MISC_SKULLS > label:first-of-type {
+	justify-self: center;
+	grid-area: span 1 / span 6;
 }
 .games-grid > legend {
 	grid-area: span 1 / span 3;

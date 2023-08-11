@@ -57,20 +57,27 @@ function shuffleMissionList(missionList) {
 	return missionList;
 }
 
+function insertSkullControls() {
+	for (const skullType in SKULLS) {
+		var currentContainer = document.querySelector('#' + skullType);
+		for (const skull of SKULLS[skullType]) {
+			var currentSkullLabel = document.createElement("label");
+			currentSkullLabel.setAttribute("for", skull);
+			currentSkullLabel.textContent = skull.replaceAll("_", " ");
+			var currentSkullCheckbox = document.createElement("input");
+			currentSkullCheckbox.setAttribute("type", "checkbox");
+			currentSkullCheckbox.setAttribute("id", skull);
+			currentContainer.appendChild(currentSkullLabel);
+			currentContainer.appendChild(currentSkullCheckbox);
+		};
+	};
+}
+
 function listSkulls() {
 	var skullsList = [];
-	careerdb.querySelectorAll("Skulls Skull").forEach(skull => skullsList.includes(skull.id) ? null : skullsList.push(skull.id));
-	console.log("skulls retrieved");
-	document.querySelector('#acrophobia').checked ? null : skullsList.splice(skullsList.indexOf('_skull_boots_off_the_ground'), 1);
-	document.querySelector('#bandanna').checked ? null : skullsList.splice(skullsList.indexOf('_skull_bandanna'), 1);
-	document.querySelector('#scarab').checked ? null : skullsList.splice(skullsList.indexOf('_skull_scarab'), 1);
-	document.querySelector('#iron').checked ? null : skullsList.splice(skullsList.indexOf('_skull_iron'), 1);
-	document.querySelector('#foreign').checked ? null : skullsList.splice(skullsList.indexOf('_skull_foreign'), 1);
-	document.querySelector('#jacked').checked ? null : skullsList.splice(skullsList.indexOf('_skull_jacked'), 1);
-	document.querySelector('#funeral').checked ? null : skullsList.splice(skullsList.indexOf('_skull_grunt_funeral'), 1);
-	document.querySelector('#angy').checked ? null : skullsList.splice(skullsList.indexOf('_skull_so_angry'), 1);
-	document.querySelector('#blind').checked ? null : skullsList.splice(skullsList.indexOf('_skull_blind'), 1);
-	console.log(skullsList);
+	document.querySelectorAll(".skullContainer input").forEach(checkbox => {
+		checkbox.checked ? skullsList.push("_skull_" + checkbox.id) : null;
+	});
 	return skullsList;
 }
 

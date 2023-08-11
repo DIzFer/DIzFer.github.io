@@ -7,9 +7,9 @@ var generationCount = 0;
 
 var careerdb = document.implementation.createDocument(null, "Empty");
 
-readSettings();
-
 parseCareerDB();
+insertSkullControls();
+readSettings();
 
 for (const _GAME of GAMES) {
 	missionplaylistdb.documentElement.appendChild(document.createElement(_GAME));
@@ -27,14 +27,6 @@ function generatePlaylists() {
 	const allowDupes = document.querySelector("input#allowDupes").checked;
 	const globalDifficulty = document.querySelector("input[name=difficulty]:checked").value;
 	const skulls = document.querySelector("input#skulls").checked;
-	const acrophobia = document.querySelector("input#acrophobia").checked;
-	const bandanna = document.querySelector("input#bandanna").checked;
-	const scarab = document.querySelector("input#scarab").checked;
-	const iron = document.querySelector("input#iron").checked;
-	const foreign = document.querySelector("input#foreign").checked;
-	const jacked = document.querySelector("input#jacked").checked;
-	const funeral = document.querySelector("input#funeral").checked;
-	const angy = document.querySelector("input#angy").checked;
 	const h1 = document.querySelector("input#Halo1").checked;
 	const h2 = document.querySelector("input#Halo2").checked;
 	const h3 = document.querySelector("input#Halo3").checked;
@@ -60,14 +52,6 @@ function generatePlaylists() {
 	playlistDescriptionArray.push(allowDupes ? HUMANIZER_OBJECT["allowDupes"] : HUMANIZER_OBJECT["noDupes"]);
 	if (skulls) {
 		playlistDescriptionArray.push(HUMANIZER_OBJECT["skulls"]);
-		acrophobia ? null : playlistDescriptionArray.push(HUMANIZER_OBJECT["noAcrophobia"]);
-		bandanna ? null : playlistDescriptionArray.push(HUMANIZER_OBJECT["noBandanna"]);
-		scarab ? null : playlistDescriptionArray.push(HUMANIZER_OBJECT["noScarab"]);
-		iron ? null : playlistDescriptionArray.push(HUMANIZER_OBJECT["noIron"]);
-		foreign ? null : playlistDescriptionArray.push(HUMANIZER_OBJECT["noForeign"]);
-		jacked ? null : playlistDescriptionArray.push(HUMANIZER_OBJECT["noJacked"]);
-		funeral ? null : playlistDescriptionArray.push(HUMANIZER_OBJECT["noFuneral"]);
-		angy ? null : playlistDescriptionArray.push(HUMANIZER_OBJECT["noAngy"]);
 	} else {
 		playlistDescriptionArray.push(HUMANIZER_OBJECT["noSkulls"]);
 	}

@@ -49,29 +49,20 @@
 				<div class="column">
 					<label for="skulls">Random skulls</label>
 					<input id="skulls" type="checkbox"/>
-					<div class="column">
-						<label for="acrophobia">Acrophobia?</label>
-						<input id="acrophobia" type="checkbox"/>
-						<label for="bandanna">Bandanna?</label>
-						<input id="bandanna" type="checkbox"/>
-						<label for="scarab">Scarab?</label>
-						<input id="scarab" type="checkbox"/>
+					<div class="column skullContainer" id="OP_SKULLS">
+						<label for="OP_SKULLS">Skulls that can make things too easy</label>
 					</div>
-					<div class="column">
-						<label for="iron">Iron?</label>
-						<input id="iron" type="checkbox"/>
-						<label for="foreign">Foreign?</label>
-						<input id="foreign" type="checkbox"/>
-						<label for="jacked">Jacked?</label>
-						<input id="jacked" type="checkbox"/>
-						<label for="funeral">Grunt Funeral?</label>
-						<input id="funeral" type="checkbox"/>
-						<label for="angy">SO... ANGRY...?</label>
-						<input id="angy" type="checkbox"/>
+					<div class="column skullContainer" id="FRUSTRATING_SKULLS">
+						<label for="FRUSTRATING_SKULLS">Skulls that have a disproportionate effect on difficulty</label>
 					</div>
-					<div class="column">
-						<label for="blind">Blind?</label>
-						<input id="blind" type="checkbox"/>
+					<div class="column skullContainer" id="DANGEROUS_SKULLS">
+						<label for="DANGEROUS_SKULLS">Skulls that may indirectly make it impossible to progress</label>
+					</div>
+					<div class="column skullContainer" id="FUN_SKULLS">
+						<label for="FUN_SKULLS">Skulls that have barely or no effect on gameplay</label>
+					</div>
+					<div class="column skullContainer" id="MISC_SKULLS">
+						<label for="MISC_SKULLS">All the rest of the skulls</label>
 					</div>
 				</div>
 			</fieldset>
@@ -148,9 +139,6 @@
 						</li>
 						<li>
 							Optional carryover (think firefight: if a skull is enabled in one mission, it stays on until the playlist ends, gaining skulls as you progress)
-						</li>
-						<li>
-							Exclusion of specific skulls (go away iron nobody likes you)
 						</li>
 					</ul>
 				</li>
