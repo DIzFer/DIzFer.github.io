@@ -72,7 +72,8 @@ const FFS_XML_FIX_LIST = {
 	"<Halo3odst": "<Halo3ODST",
 	"</Halo3odst": "</Halo3ODST",
 	"skulllist": "SkullList",
-	"skull": "Skull",
+	"<skull": "<Skull",
+	"</skull": "</Skull",
 };
 
 const CUTSCENES = [
