@@ -45,6 +45,7 @@ function listMissions() {
 }
 
 function shuffleMissionList(missionList) {
+	// https://bost.ocks.org/mike/shuffle/
 	var remaining = missionList.length, t, i;
 	while (remaining) {
 		i = Math.floor(Math.random() * remaining--);
