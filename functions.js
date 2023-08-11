@@ -70,16 +70,16 @@ function insertSkullControls() {
 	};
 }
 
-function listSkulls(random = false) {
-	var skullsList = [];
+function listSkulls(random = false, prefill = new Set()) {
+	var skullsList = prefill;
 	document.querySelectorAll(".skullContainer input").forEach(checkbox => {
 		if (checkbox.checked) {
 			if (random) {
 				if (Math.random() < .2) {
-					skullsList.push(checkbox.id);
+					skullsList.add(checkbox.id);
 				}
 			} else {
-				skullsList.push(checkbox.id);
+				skullsList.add(checkbox.id);
 			}
 		}
 	});

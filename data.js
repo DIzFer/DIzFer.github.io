@@ -106,5 +106,6 @@ const HUMANIZER_OBJECT = {
 	"noDupes": "No Dupes",
 	"noSkulls": "No skulls",
 	"randomSkulls": "Random skulls",
+	"incrementalSkulls": "Incremental skulls",
 	"fixedSkulls": "Fixed skulls"
 }

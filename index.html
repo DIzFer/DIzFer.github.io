@@ -49,8 +49,10 @@
 					<legend>Skull mode</legend>
 					<label for="noSkulls">No skulls</label>
 					<input name="skullMode" id="noSkulls" value="noSkulls" type="radio"/>
-					<label for="randomSkulls">Random skulls from selection</label>
+					<label for="randomSkulls">Random each mission</label>
 					<input name="skullMode" id="randomSkulls" value="randomSkulls" type="radio"/>
+					<label for="incrementalSkulls">Random, each mission adds more</label>
+					<input name="skullMode" id="incrementalSkulls" value="incrementalSkulls" type="radio"/>
 					<label for="fixedSkulls">Enforce selected skulls</label>
 					<input name="skullMode" id="fixedSkulls" value="fixedSkulls" type="radio"/>
 				</div>
@@ -132,6 +134,7 @@
 						<ul>
 							<li>No skulls.</li>
 							<li>Random each mission: each mission will have its own, randomized, set of skulls.</li>
+							<li>Random, each mission adds more: each mission will have <em>at least</em> the skulls of the previous mission, plus a random chance at more.</li>
 							<li>Enforce selected skulls: every mission will have the enabled skulls applied.</li>
 						</ul>
 						Any skull may be chosen for any mission. This includes skulls that aren't available for a given game. They will show up in the pause menu as enabled, but don't do anything.</li>
@@ -145,13 +148,6 @@
 			<ul>
 				<li>Randomizing difficulty (so a single playlist can include multiple difficulties)</li>
 				<li>Filtering specific missions instead of just games plus the cutscenes preset (expect "vehicular mayhem" presets, or "flood rando", or "floodless", like the default playlists)</li>
-				<li>💀💀💀💀💀💀
-					<ul>
-						<li>
-							Optional carryover (think firefight: if a skull is enabled in one mission, it stays on until the playlist ends, gaining skulls as you progress)
-						</li>
-					</ul>
-				</li>
 				<li>Mombasa Streets only exists once. The feature required for implementing the multiple versions of it (like the default "Street Smart" playlist) also unlocks rally points (used, for example, in the "Off your feet" Reach playlist).</li>
 				<li>The Classic Rando Feature™: daily/weekly seeds!</li>
 				<li>Generate a missionplaylistdb that doesn't clobber the default playlists. Not really hard, just want to keep the xml files clean and readable until everything works 100%</li>

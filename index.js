@@ -63,6 +63,7 @@ function generatePlaylists() {
 		var chosenMissions = shuffleMissionList(missionList).slice(0, missionCount);
 		console.log("Missions for playlist " + i + " shuffled");
 		console.log(chosenMissions);
+		var previousSkulls = new Set();
 		for (const _MISSION of chosenMissions) {
 			var missionElement = document.createElement("Map");
 			missionElement.setAttribute("id", _MISSION);
@@ -71,6 +72,16 @@ function generatePlaylists() {
 				case "randomSkulls":
 					var skullList = document.createElement("SkullList");
 					listSkulls(true).forEach(skull => {
+						var skullElement = document.createElement("Skull");
+						skullElement.id = "_skull_" + skull;
+						skullList.appendChild(skullElement);
+					})
+					missionElement.appendChild(skullList);
+					break;
+				case "incrementalSkulls":
+					var skullList = document.createElement("SkullList");
+					listSkulls(true, previousSkulls).forEach(skull => {
+						previousSkulls.add(skull);
 						var skullElement = document.createElement("Skull");
 						skullElement.id = "_skull_" + skull;
 						skullList.appendChild(skullElement);
