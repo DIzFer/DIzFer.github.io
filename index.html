@@ -107,6 +107,7 @@
 			<h2>What is this?</h2>
 			<p>Halo: MCC has Campaign Playlists where you can play predefined missions from the six games in orders different to the actual campaigns, sometimes switching from one game to another.</p>
 			<p>This website hijacks this feature to let you play randomly selected missions.</p>
+			<p>This is at least the second randomizer written; <a href="https://randomizer.scal.es/">randomizer.scal.es</a> also exists, with a slightly different feature set, but more polish. Check that one out too.</a>
 
 			<h2>How does this work?</h2>
 			<p>In a normal MCC install, you can find <code>/Data/careerdb/missionplaylistdb.xml</code>. This file contains the default playlists and is surprisingly readable. This rando will generate a replacement file with the randomized playlists.</p>
@@ -154,6 +155,13 @@
 				<li>Rally points, maybe?</li>
 				<li>Generate a missionplaylistdb that doesn't clobber the default playlists. Not really hard, just want to keep the xml files clean and readable until everything works 100%.</li>
 			</ul>
+			<p>There's also a couple of MCC bugs that I'd need to work around, such as:</p>
+			<ul>
+				<li>While having different skull sets per mission works, the game only notices when changing games or after saving and quitting.</li>
+				<li>It seems like stuff gets a bit weird if the same mission appears multiple times in a row.</li>
+				<li>Unless something's changed, Scales' randomizer also warns about changing difficulties.</li>
+			</ul>
+			<p>The workaround for all three of these is the same code-wise.</p>
 			<p>Additionally, there's a couple of longshot features that I'd like to add but aren't necessarily possible:</p>
 			<ul>
 				<li>Spartan Ops. These should behave exactly like a campaign mission.</li>
