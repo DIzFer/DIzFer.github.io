@@ -32,7 +32,6 @@ function listMissions() {
 		chapterList.forEach(chapter => missionList.push(chapter.getAttribute("builtInMapId")));
 	}
 	if (document.querySelector("input#allowDupes").checked) {
-		console.log("dupes enabled");
 		var n = document.querySelector("input#missionCount").value - 1;
 		const singleMissionList = missionList;
 		while (n) {
@@ -40,7 +39,6 @@ function listMissions() {
 			n--;
 		}
 	}
-	console.log(missionList);
 	return missionList;
 }
 
@@ -53,7 +51,6 @@ function shuffleMissionList(missionList) {
 		missionList[remaining] = missionList[i];
 		missionList[i] = t;
 	}
-	console.log("Missions shuffled");
 	return missionList;
 }
 

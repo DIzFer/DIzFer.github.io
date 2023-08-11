@@ -55,16 +55,13 @@ function generatePlaylists() {
 
 
 	for (let i = 1; i <= playlistCount; i++) {
-		console.log("maplistBase");
-		console.log(maplistBase);
-		console.log("playlistBase");
-		console.log(playlistBase);
+		console.log("Beginning");
 
 		var maplist = maplistBase.cloneNode();
 		var playlist = playlistBase.cloneNode();
 
 		var chosenMissions = shuffleMissionList(missionList).slice(0, missionCount);
-		console.log("missions for playlist " + i);
+		console.log("Missions for playlist " + i + " shuffled");
 		console.log(chosenMissions);
 		for (const _MISSION of chosenMissions) {
 			var missionElement = document.createElement("Map");
@@ -88,11 +85,11 @@ function generatePlaylists() {
 						var skullElement = document.createElement("Skull");
 						skullElement.id = skull;
 						skullList.appendChild(skullElement);
-							console.log(skull);
 					})
 					missionElement.appendChild(skullList);
 					break;
 			}
+			skullList ? console.log(skullList.childElementCount + " skulls for mission " + _MISSION.replaceAll("_map_id_", "")) : null;
 			maplist.appendChild(missionElement);
 		}
 
@@ -101,8 +98,6 @@ function generatePlaylists() {
 		playlist.setAttribute("id", playlistIDBase + "-" + generationCount + "-" + i);
 		playlist.setAttribute("name", playlistTitle + " " + generationCount + "-" + i);
 		playlist.setAttribute("desc", playlistDescriptionArray.join(", "));
-
-		console.log(crosstitle);
 
 		crosstitle.appendChild(playlist);
 	}
