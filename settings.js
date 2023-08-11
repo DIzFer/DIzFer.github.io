@@ -28,14 +28,14 @@ function readSettings() {
 		defaultSettings.set("allowDupes", false);
 		defaultSettings.set("difficulty", "legendary");
 		defaultSettings.set("skulls", false);
-		defaultSettings.set("acrophobia", true);
+		defaultSettings.set("boots_off_the_ground", true);
 		defaultSettings.set("bandanna", true);
 		defaultSettings.set("scarab", true);
 		defaultSettings.set("iron", false);
 		defaultSettings.set("foreign", false);
 		defaultSettings.set("jacked", false);
-		defaultSettings.set("funeral", true);
-		defaultSettings.set("angy", true);
+		defaultSettings.set("grunt_funeral", true);
+		defaultSettings.set("so_angry", true);
 		defaultSettings.set("blind", false);
 		defaultSettings.set("Halo1", true);
 		defaultSettings.set("Halo2", true);
@@ -46,8 +46,20 @@ function readSettings() {
 		window.history.replaceState("null", "", "?" + defaultSettings);
 		fetchCareerDB();
 	};
+	var currentSettings = new URLSearchParams(window.location.search)
+	const legacySettings = {
+		"acrophobia": "boots_off_the_ground",
+		"funeral": "grunt_funeral",
+		"angy": "so_angry"
+	};
+	for (const oldSetting in legacySettings) {
+		if (currentSettings.has(oldSetting)) {
+			currentSettings.set(legacySettings[oldSetting], currentSettings.get(oldSetting));
+			currentSettings.delete(oldSetting);
+			window.history.replaceState("null", "", "?" + currentSettings);
+		}
+	}
 	document.querySelectorAll("input").forEach(function(setting) {
-		const currentSettings = new URLSearchParams(window.location.search)
 		switch (setting.type) {
 			case "checkbox":
 				if (currentSettings.get(setting.id) === "true") {
