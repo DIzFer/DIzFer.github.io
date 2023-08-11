@@ -27,9 +27,13 @@ function fetchCareerDB() {
 
 function listMissions() {
 	var missionList = [];
-	for (const _GAME of GAMES.filter(game => document.querySelector("input#" + game).checked)) {
-		const chapterList = careerdb.querySelectorAll(_GAME + " > Chapters > Chapter");
-		chapterList.forEach(chapter => missionList.push(chapter.getAttribute("builtInMapId")));
+	for (const _GAME in GAMES) {
+		if (document.querySelector("input#" + _GAME).checked) {
+			missionList = missionList.concat(GAMES[_GAME].map(m => "_map_id_" + _GAME + "_" + m))
+			if (document.querySelector("input#includeCutscenes").checked && _GAME !== "halo1" ) {
+				missionList = missionList.concat(CUTSCENES[_GAME].map(m => "_map_id_" + _GAME + "_" + m))
+			}
+		}
 	}
 	if (document.querySelector("input#allowDupes").checked) {
 		var n = document.querySelector("input#missionCount").value - 1;

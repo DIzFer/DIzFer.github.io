@@ -11,7 +11,7 @@ parseCareerDB();
 insertSkullControls();
 readSettings();
 
-for (const _GAME of GAMES) {
+for (const _GAME in GAMES) {
 	missionplaylistdb.documentElement.appendChild(document.createElement(_GAME));
 }
 
@@ -33,10 +33,6 @@ function generatePlaylists() {
 	const odst = document.querySelector("input#halo3odst").checked;
 	const reach = document.querySelector("input#haloreach").checked;
 	const h4 = document.querySelector("input#halo4").checked;
-
-	if (!includeCutscenes) {
-		missionList = missionList.filter(mission => !CUTSCENES.includes(mission));
-	}
 
 	const date = new Date();
 	const playlistIDBase = date.toISOString();

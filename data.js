@@ -1,11 +1,99 @@
-const GAMES = [
-	"halo1",
-	"halo2",
-	"halo3",
-	"halo3odst",
-	"haloreach",
-	"halo4"
-];
+const GAMES = {
+	"halo1": [
+		"pillar_of_autumn",
+		"halo",
+		"truth_and_reconciliation",
+		"silent_cartographer",
+		"assault_on_the_control_room",
+		"343_guilty_spark",
+		"the_library",
+		"two_betrayals",
+		"keyes",
+		"the_maw"
+	],
+	"halo2": [
+		"cairo_station",
+		"outskirts",
+		"metropolis",
+		"the_arbiter",
+		"the_oracle",
+		"delta_halo",
+		"regret",
+		"sacred_icon",
+		"quarantine_zone",
+		"gravemind",
+		"uprising",
+		"high_charity",
+		"the_great_journey"
+	],
+	"halo3": [
+		"sierra_117",
+		"crows_nest",
+		"tsavo_highway",
+		"the_storm",
+		"floodgate",
+		"the_ark",
+		"the_covenant",
+		"cortana",
+		"halo"
+	],
+	"halo3odst": [
+		"mombasa_streets",
+		"tayari_plaza",
+		"uplift_reserve",
+		"kizingo_boulevard",
+		"oni_alpha_site",
+		"nmpd_hq",
+		"kikowani_station",
+		"data_hive",
+		"coastal_highway"
+	],
+	"haloreach": [
+		"winter_contingency",
+		"oni_sword_base",
+		"nightfall",
+		"tip_of_the_spear",
+		"long_night_of_solace",
+		"exodus",
+		"new_alexandria",
+		"the_package",
+		"the_pillar_of_autumn"
+	],
+	"halo4": [
+		"dawn",
+		"requiem",
+		"forerunner",
+		"infinity",
+		"reclaimer",
+		"shutdown",
+		"composer",
+		"midnight"
+	]
+};
+
+const CUTSCENES = {
+	"halo2": [
+		"the_heretic",
+		"the_armory"
+	],
+	"halo3": [
+		"arrival",
+		"epilogue"
+	],
+	"halo3odst": [
+		"prepare_to_drop",
+		"epilogue"
+	],
+	"haloreach": [
+		"noble_actual",
+		"the_pillar_of_autumn_credits",
+		"lone_wolf"
+	],
+	"halo4": [
+		"prologue",
+		"epilogue"
+	]
+};
 
 const SKULLS = {
 	"OP_SKULLS": [
@@ -75,20 +163,6 @@ const FFS_XML_FIX_LIST = {
 	"<skull": "<Skull",
 	"</skull": "</Skull",
 };
-
-const CUTSCENES = [
-	"_map_id_halo2_the_heretic",
-	"_map_id_halo2_the_armory",
-	"_map_id_halo3_arrival",
-	"_map_id_halo3_epilogue",
-	"_map_id_halo3odst_prepare_to_drop",
-	"_map_id_halo3odst_epilogue",
-	"_map_id_haloreach_noble_actual",
-	"_map_id_haloreach_the_pillar_of_autumn_credits",
-	"_map_id_haloreach_lone_wolf",
-	"_map_id_halo4_prologue",
-	"_map_id_halo4_epilogue",
-];
 
 const HUMANIZER_OBJECT = {
 	"_campaign_difficulty_level_easy": "Easy",
