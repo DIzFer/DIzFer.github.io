@@ -3,8 +3,10 @@ function saveSetting(element) {
 	var currentSettings = new URLSearchParams(window.location.search)
 	switch (input.type) {
 		case "checkbox":
-			currentSettings.set(input.id, input.checked);
-			console.log("saved " + input.id + " as " + input.checked);
+			if (input.checked) {
+				currentSettings.set(input.id, input.checked);
+				console.log("saved " + input.id + " as " + input.checked);
+			}
 			break;
 		case "radio":
 			currentSettings.set(input.name, input.id);
