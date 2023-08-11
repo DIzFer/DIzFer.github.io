@@ -61,7 +61,12 @@ function generatePlaylists() {
 		var previousSkulls = new Set();
 		for (const _MISSION of chosenMissions) {
 			var missionElement = document.createElement("Map");
-			missionElement.setAttribute("id", "_map_id_" + _MISSION);
+			if (_MISSION.startsWith("halo3odst_mombasa_streets")) {
+				missionElement.setAttribute("id", "_map_id_halo3odst_mombasa_streets");
+				missionElement.setAttribute("insertionpoint", _MISSION.at(-1));
+			} else {
+				missionElement.setAttribute("id", "_map_id_" + _MISSION);
+			}
 			missionElement.setAttribute("diffID", globalDifficulty)
 			switch (skullMode) {
 				case "randomSkulls":

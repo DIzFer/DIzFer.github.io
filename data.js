@@ -38,13 +38,19 @@ const GAMES = {
 		"halo"
 	],
 	"halo3odst": [
-		"mombasa_streets",
+		"mombasa_streets_0",
 		"tayari_plaza",
+		"mombasa_streets_1",
 		"uplift_reserve",
+		"mombasa_streets_2",
 		"kizingo_boulevard",
+		"mombasa_streets_3",
 		"oni_alpha_site",
+		"mombasa_streets_4",
 		"nmpd_hq",
+		"mombasa_streets_5",
 		"kikowani_station",
+		"mombasa_streets_6",
 		"data_hive",
 		"coastal_highway"
 	],
