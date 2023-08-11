@@ -28,7 +28,6 @@ function readSettings() {
 		defaultSettings.set("playlistTitle", "Randomized playlist");
 		defaultSettings.set("missionCount", 7);
 		defaultSettings.set("playlistCount", 3);
-		defaultSettings.set("excludeCutscenes", true);
 		defaultSettings.set("difficulty", "legendary");
 		defaultSettings.set("skullMode", "noSkulls");
 		defaultSettings.set("bandanna", true);
@@ -71,10 +70,13 @@ function readSettings() {
 		"Halo3ODST": "halo3odst",
 		"HaloReach": "haloreach",
 		"Halo4": "halo4",
+		"excludeCutscenes": "includeCutscenes"
 	};
 	for (const oldSetting in legacySettings) {
 		if (currentSettings.has(oldSetting)) {
-			currentSettings.set(legacySettings[oldSetting], currentSettings.get(oldSetting));
+			if (oldSetting !== "excludeCutscenes") {
+				currentSettings.set(legacySettings[oldSetting], currentSettings.get(oldSetting));
+			}
 			currentSettings.delete(oldSetting);
 			window.history.replaceState("null", "", "?" + currentSettings);
 		}

@@ -23,7 +23,7 @@ function generatePlaylists() {
 	const playlistTitle = document.querySelector("input#playlistTitle").value;
 	const missionCount = document.querySelector("input#missionCount").value;
 	const playlistCount = document.querySelector("#playlistCount").value;
-	const excludeCutscenes = document.querySelector("input#excludeCutscenes").checked;
+	const includeCutscenes = document.querySelector("input#includeCutscenes").checked;
 	const allowDupes = document.querySelector("input#allowDupes").checked;
 	const globalDifficulty = document.querySelector("input[name=difficulty]:checked").value;
 	const skullMode = document.querySelector("input[name=skullMode]:checked").value;
@@ -34,7 +34,7 @@ function generatePlaylists() {
 	const reach = document.querySelector("input#haloreach").checked;
 	const h4 = document.querySelector("input#halo4").checked;
 
-	if (excludeCutscenes) {
+	if (!includeCutscenes) {
 		missionList = missionList.filter(mission => !CUTSCENES.includes(mission));
 	}
 
@@ -48,7 +48,7 @@ function generatePlaylists() {
 	odst ? playlistDescriptionArray.push(HUMANIZER_OBJECT["halo3odst"]) : null;
 	reach ? playlistDescriptionArray.push(HUMANIZER_OBJECT["haloreach"]) : null;
 	h4 ? playlistDescriptionArray.push(HUMANIZER_OBJECT["halo4"]) : null;
-	excludeCutscenes ? null : playlistDescriptionArray.push(HUMANIZER_OBJECT["cutscenes"]);
+	includeCutscenes ? playlistDescriptionArray.push(HUMANIZER_OBJECT["cutscenes"]) : null;
 	playlistDescriptionArray.push(allowDupes ? HUMANIZER_OBJECT["allowDupes"] : HUMANIZER_OBJECT["noDupes"]);
 	playlistDescriptionArray.push(HUMANIZER_OBJECT[skullMode]);
 	console.log(playlistDescriptionArray);
