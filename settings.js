@@ -6,6 +6,8 @@ function saveSetting(element) {
 			if (input.checked) {
 				currentSettings.set(input.id, input.checked);
 				console.log("saved " + input.id + " as " + input.checked);
+			} else {
+				currentSettings.delete(input.id);
 			}
 			break;
 		case "radio":
