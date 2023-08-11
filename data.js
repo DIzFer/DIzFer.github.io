@@ -1,10 +1,10 @@
 const GAMES = [
-	"Halo1",
-	"Halo2",
-	"Halo3",
-	"Halo3ODST",
-	"HaloReach",
-	"Halo4"
+	"halo1",
+	"halo2",
+	"halo3",
+	"halo3odst",
+	"haloreach",
+	"halo4"
 ];
 
 const SKULLS = {
@@ -95,12 +95,12 @@ const HUMANIZER_OBJECT = {
 	"_campaign_difficulty_level_normal": "Normal",
 	"_campaign_difficulty_level_hard": "Heroic",
 	"_campaign_difficulty_level_impossible": "Legendary",
-	"Halo1": "CE",
-	"Halo2": "H2",
-	"Halo3": "H3",
-	"Halo3ODST": "ODST",
-	"HaloReach": "Reach",
-	"Halo4": "H4",
+	"halo1": "CE",
+	"halo2": "H2",
+	"halo3": "H3",
+	"halo3odst": "ODST",
+	"haloreach": "Reach",
+	"halo4": "H4",
 	"cutscenes": "Cutscenes",
 	"allowDupes": "Dupes allowed",
 	"noDupes": "No Dupes",

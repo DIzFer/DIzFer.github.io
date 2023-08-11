@@ -50,12 +50,12 @@ function readSettings() {
 		defaultSettings.set("masterblaster", true);
 		defaultSettings.set("streaking", true);
 		defaultSettings.set("cowbell", true);
-		defaultSettings.set("Halo1", true);
-		defaultSettings.set("Halo2", true);
-		defaultSettings.set("Halo3", true);
-		defaultSettings.set("Halo3ODST", true);
-		defaultSettings.set("HaloReach", true);
-		defaultSettings.set("Halo4", true);
+		defaultSettings.set("halo1", true);
+		defaultSettings.set("halo2", true);
+		defaultSettings.set("halo3", true);
+		defaultSettings.set("halo3odst", true);
+		defaultSettings.set("haloreach", true);
+		defaultSettings.set("halo4", true);
 		window.history.replaceState("null", "", "?" + defaultSettings);
 		fetchCareerDB();
 	};
@@ -64,7 +64,13 @@ function readSettings() {
 		"acrophobia": "boots_off_the_ground",
 		"funeral": "grunt_funeral",
 		"angy": "so_angry",
-		"skulls": [ "skullMode", "randomSkulls" ]
+		"skulls": [ "skullMode", "randomSkulls" ],
+		"Halo1": "halo1",
+		"Halo2": "halo2",
+		"Halo3": "halo3",
+		"Halo3ODST": "halo3odst",
+		"HaloReach": "haloreach",
+		"Halo4": "halo4",
 	};
 	for (const oldSetting in legacySettings) {
 		if (currentSettings.has(oldSetting)) {

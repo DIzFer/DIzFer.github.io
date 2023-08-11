@@ -27,12 +27,12 @@ function generatePlaylists() {
 	const allowDupes = document.querySelector("input#allowDupes").checked;
 	const globalDifficulty = document.querySelector("input[name=difficulty]:checked").value;
 	const skullMode = document.querySelector("input[name=skullMode]:checked").value;
-	const h1 = document.querySelector("input#Halo1").checked;
-	const h2 = document.querySelector("input#Halo2").checked;
-	const h3 = document.querySelector("input#Halo3").checked;
-	const odst = document.querySelector("input#Halo3ODST").checked;
-	const reach = document.querySelector("input#HaloReach").checked;
-	const h4 = document.querySelector("input#Halo4").checked;
+	const h1 = document.querySelector("input#halo1").checked;
+	const h2 = document.querySelector("input#halo2").checked;
+	const h3 = document.querySelector("input#halo3").checked;
+	const odst = document.querySelector("input#halo3odst").checked;
+	const reach = document.querySelector("input#haloreach").checked;
+	const h4 = document.querySelector("input#halo4").checked;
 
 	if (excludeCutscenes) {
 		missionList = missionList.filter(mission => !CUTSCENES.includes(mission));
@@ -42,12 +42,12 @@ function generatePlaylists() {
 	const playlistIDBase = date.toISOString();
 
 	var playlistDescriptionArray = [];
-	h1 ? playlistDescriptionArray.push(HUMANIZER_OBJECT["Halo1"]) : null;
-	h2 ? playlistDescriptionArray.push(HUMANIZER_OBJECT["Halo3"]) : null;
-	h3 ? playlistDescriptionArray.push(HUMANIZER_OBJECT["Halo3"]) : null;
-	odst ? playlistDescriptionArray.push(HUMANIZER_OBJECT["Halo3ODST"]) : null;
-	reach ? playlistDescriptionArray.push(HUMANIZER_OBJECT["HaloReach"]) : null;
-	h4 ? playlistDescriptionArray.push(HUMANIZER_OBJECT["Halo4"]) : null;
+	h1 ? playlistDescriptionArray.push(HUMANIZER_OBJECT["halo1"]) : null;
+	h2 ? playlistDescriptionArray.push(HUMANIZER_OBJECT["halo3"]) : null;
+	h3 ? playlistDescriptionArray.push(HUMANIZER_OBJECT["halo3"]) : null;
+	odst ? playlistDescriptionArray.push(HUMANIZER_OBJECT["halo3odst"]) : null;
+	reach ? playlistDescriptionArray.push(HUMANIZER_OBJECT["haloreach"]) : null;
+	h4 ? playlistDescriptionArray.push(HUMANIZER_OBJECT["halo4"]) : null;
 	excludeCutscenes ? null : playlistDescriptionArray.push(HUMANIZER_OBJECT["cutscenes"]);
 	playlistDescriptionArray.push(allowDupes ? HUMANIZER_OBJECT["allowDupes"] : HUMANIZER_OBJECT["noDupes"]);
 	playlistDescriptionArray.push(HUMANIZER_OBJECT[skullMode]);
