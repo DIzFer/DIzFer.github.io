@@ -26,7 +26,7 @@ function generatePlaylists() {
 	const excludeCutscenes = document.querySelector("input#excludeCutscenes").checked;
 	const allowDupes = document.querySelector("input#allowDupes").checked;
 	const globalDifficulty = document.querySelector("input[name=difficulty]:checked").value;
-	const skulls = document.querySelector("input#skulls").checked;
+	const skullMode = document.querySelector("input[name=skullMode]:checked").value;
 	const h1 = document.querySelector("input#Halo1").checked;
 	const h2 = document.querySelector("input#Halo2").checked;
 	const h3 = document.querySelector("input#Halo3").checked;
@@ -50,11 +50,7 @@ function generatePlaylists() {
 	h4 ? playlistDescriptionArray.push(HUMANIZER_OBJECT["Halo4"]) : null;
 	excludeCutscenes ? null : playlistDescriptionArray.push(HUMANIZER_OBJECT["cutscenes"]);
 	playlistDescriptionArray.push(allowDupes ? HUMANIZER_OBJECT["allowDupes"] : HUMANIZER_OBJECT["noDupes"]);
-	if (skulls) {
-		playlistDescriptionArray.push(HUMANIZER_OBJECT["skulls"]);
-	} else {
-		playlistDescriptionArray.push(HUMANIZER_OBJECT["noSkulls"]);
-	}
+	playlistDescriptionArray.push(HUMANIZER_OBJECT[skullMode]);
 	console.log(playlistDescriptionArray);
 
 
@@ -74,16 +70,28 @@ function generatePlaylists() {
 			var missionElement = document.createElement("Map");
 			missionElement.setAttribute("id", _MISSION);
 			missionElement.setAttribute("diffID", globalDifficulty)
-			if (skulls) {
-				var skullList = document.createElement("SkullList");
-				listSkulls().forEach(skull => {
-					if (Math.random() < .2) {
+			switch (skullMode) {
+				case "randomSkulls":
+					var skullList = document.createElement("SkullList");
+					listSkulls().forEach(skull => {
+						if (Math.random() < .2) {
+							var skullElement = document.createElement("Skull");
+							skullElement.id = skull;
+							skullList.appendChild(skullElement);
+						}
+					})
+					missionElement.appendChild(skullList);
+					break;
+				case "fixedSkulls":
+					var skullList = document.createElement("SkullList");
+					listSkulls().forEach(skull => {
 						var skullElement = document.createElement("Skull");
 						skullElement.id = skull;
 						skullList.appendChild(skullElement);
-					}
-				})
-				missionElement.appendChild(skullList);
+							console.log(skull);
+					})
+					missionElement.appendChild(skullList);
+					break;
 			}
 			maplist.appendChild(missionElement);
 		}

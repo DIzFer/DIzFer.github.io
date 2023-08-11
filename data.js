@@ -103,15 +103,7 @@ const HUMANIZER_OBJECT = {
 	"cutscenes": "Cutscenes",
 	"allowDupes": "Dupes allowed",
 	"noDupes": "No Dupes",
-	"skulls": "With skulls",
 	"noSkulls": "No skulls",
-	"noAcrophobia": "No Acrophobia",
-	"noBandanna": "No Bandanna",
-	"noScarab": "No Scarab",
-	"noIron": "No Iron",
-	"noForeign": "No Foreign",
-	"noJacked": "No Jacked",
-	"noFuneral": "No Grunt Funeral",
-	"noAngy": "No SO... ANGRY...",
-	"noBlind": "No Blind",
+	"randomSkulls": "Random skulls",
+	"fixedSkulls": "Fixed skulls"
 }

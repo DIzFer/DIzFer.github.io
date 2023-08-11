@@ -133,3 +133,8 @@ button:hover, a#download:hover {
 	background-color: #e9e9e980;
 	cursor: pointer;
 }
+.column hr {
+	grid-area: span 1 / span 2;
+	width: 90%;
+	color: var(--accent);
+}
