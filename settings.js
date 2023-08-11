@@ -27,9 +27,7 @@ function readSettings() {
 		defaultSettings.set("missionCount", 7);
 		defaultSettings.set("playlistCount", 3);
 		defaultSettings.set("excludeCutscenes", true);
-		defaultSettings.set("allowDupes", false);
 		defaultSettings.set("difficulty", "legendary");
-		defaultSettings.set("skulls", false);
 		defaultSettings.set("bandanna", true);
 		defaultSettings.set("boots_off_the_ground", true);
 		defaultSettings.set("scarab", true);
