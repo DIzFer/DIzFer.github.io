@@ -18,8 +18,6 @@ for (const _GAME in GAMES) {
 function generatePlaylists() {
 	generationCount++;
 
-	var missionList = listMissions();
-
 	const playlistTitle = document.querySelector("input#playlistTitle").value;
 	const missionCount = document.querySelector("input#missionCount").value;
 	const playlistCount = document.querySelector("#playlistCount").value;
@@ -56,13 +54,14 @@ function generatePlaylists() {
 		var maplist = maplistBase.cloneNode();
 		var playlist = playlistBase.cloneNode();
 
-		var chosenMissions = shuffleMissionList(missionList).slice(0, missionCount);
+		var chosenMissions = listMissions(missionCount);
+
 		console.log("Missions for playlist " + i + " shuffled");
 		console.log(chosenMissions);
 		var previousSkulls = new Set();
 		for (const _MISSION of chosenMissions) {
 			var missionElement = document.createElement("Map");
-			missionElement.setAttribute("id", _MISSION);
+			missionElement.setAttribute("id", "_map_id_" + _MISSION);
 			missionElement.setAttribute("diffID", globalDifficulty)
 			switch (skullMode) {
 				case "randomSkulls":

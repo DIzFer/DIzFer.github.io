@@ -25,13 +25,25 @@ function fetchCareerDB() {
 	xhr.send();
 }
 
-function listMissions() {
+function shuffleMissionList(missionList) {
+	// https://bost.ocks.org/mike/shuffle/
+	var remaining = missionList.length, t, i;
+	while (remaining) {
+		i = Math.floor(Math.random() * remaining--);
+		t = missionList[remaining];
+		missionList[remaining] = missionList[i];
+		missionList[i] = t;
+	}
+	return missionList;
+}
+
+function listMissions(count) {
 	var missionList = [];
 	for (const _GAME in GAMES) {
 		if (document.querySelector("input#" + _GAME).checked) {
-			missionList = missionList.concat(GAMES[_GAME].map(m => "_map_id_" + _GAME + "_" + m))
+			missionList = missionList.concat(GAMES[_GAME].map(m => _GAME + "_" + m))
 			if (document.querySelector("input#includeCutscenes").checked && _GAME !== "halo1" ) {
-				missionList = missionList.concat(CUTSCENES[_GAME].map(m => "_map_id_" + _GAME + "_" + m))
+				missionList = missionList.concat(CUTSCENES[_GAME].map(m => _GAME + "_" + m))
 			}
 		}
 	}
@@ -43,19 +55,7 @@ function listMissions() {
 			n--;
 		}
 	}
-	return missionList;
-}
-
-function shuffleMissionList(missionList) {
-	// https://bost.ocks.org/mike/shuffle/
-	var remaining = missionList.length, t, i;
-	while (remaining) {
-		i = Math.floor(Math.random() * remaining--);
-		t = missionList[remaining];
-		missionList[remaining] = missionList[i];
-		missionList[i] = t;
-	}
-	return missionList;
+	return shuffleMissionList(missionList).slice(0, count);
 }
 
 function insertSkullControls() {
