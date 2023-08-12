@@ -17,6 +17,7 @@
 	--text: black;
 	--background: #bbbab6;
 	--accent: #e9e9e9;
+	--linkColour: #2c7ee2;
 }
 @media (prefers-color-scheme: dark) {
 	:root {
@@ -47,7 +48,7 @@ body > * {
 fieldset {
 	border: 0;
 	margin: 0;
-	background-image: linear-gradient(0, transparent, #ffffff88);
+	background-image: linear-gradient(0, transparent, var(--accent));
 	width: 100%;
 	border-top: 1px solid var(--accent) !important;
 }
@@ -137,4 +138,7 @@ button:hover, a#download:hover {
 	grid-area: span 1 / span 2;
 	width: 90%;
 	color: var(--accent);
+}
+a {
+	color: var(--linkColour);
 }
