@@ -56,7 +56,6 @@ function readSettings() {
 		defaultSettings.set("haloreach", true);
 		defaultSettings.set("halo4", true);
 		window.history.replaceState("null", "", "?" + defaultSettings);
-		fetchCareerDB();
 	};
 	var currentSettings = new URLSearchParams(window.location.search)
 	const legacySettings = {
@@ -81,6 +80,7 @@ function readSettings() {
 			window.history.replaceState("null", "", "?" + currentSettings);
 		}
 	}
+	localStorage.clear() // TODO: remove at some point ig?
 	document.querySelectorAll("input").forEach(function(setting) {
 		switch (setting.type) {
 			case "checkbox":

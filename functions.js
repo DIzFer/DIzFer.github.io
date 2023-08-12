@@ -1,28 +1,5 @@
 function reset() {
-	localStorage.clear();
 	location.href = "/";
-}
-
-function parseCareerDB() {
-	const cachedCareerDB = localStorage.getItem("careerdb");
-	if (cachedCareerDB !== null) {
-		const parser = new DOMParser();
-		careerdb = parser.parseFromString(cachedCareerDB, "text/xml");
-	}
-	console.log("CareerDB parsed");
-}
-
-function storeCareerDB() {
-	localStorage.setItem("careerdb", this.responseText);
-	console.log("CareerDB stored");
-	parseCareerDB();
-}
-
-function fetchCareerDB() {
-	xhr = new XMLHttpRequest();
-	xhr.open("GET", "/careerdb.xml");
-	xhr.addEventListener("load", storeCareerDB);
-	xhr.send();
 }
 
 function shuffleMissionList(missionList) {

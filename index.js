@@ -5,9 +5,6 @@ const playlistBase = document.createElement("Playlist");
 const maplistBase = document.createElement("MapList");
 var generationCount = 0;
 
-var careerdb = document.implementation.createDocument(null, "Empty");
-
-parseCareerDB();
 insertSkullControls();
 readSettings();
 
