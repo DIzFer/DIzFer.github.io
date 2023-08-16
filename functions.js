@@ -2,16 +2,21 @@ function reset() {
 	location.href = "/";
 }
 
-function shuffleMissionList(missionList) {
+function shuffleList(list) {
 	// https://bost.ocks.org/mike/shuffle/
-	var remaining = missionList.length, t, i;
+	if (list.length != undefined) {
+		var remaining = list.length;
+	} else if (list.size != undefined) {
+		var remaining = list.size;
+	}
+	var t, i;
 	while (remaining) {
 		i = Math.floor(Math.random() * remaining--);
-		t = missionList[remaining];
-		missionList[remaining] = missionList[i];
-		missionList[i] = t;
+		t = list[remaining];
+		list[remaining] = list[i];
+		list[i] = t;
 	}
-	return missionList;
+	return list;
 }
 
 function listMissions() {
@@ -33,7 +38,7 @@ function listMissions() {
 			n--;
 		}
 	}
-	return shuffleMissionList(missionList).slice(0, missionCount);
+	return shuffleList(missionList).slice(0, missionCount);
 }
 
 function insertSkullControls() {
