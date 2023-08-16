@@ -16,7 +16,6 @@ function generatePlaylists() {
 	generationCount++;
 
 	const playlistTitle = document.querySelector("input#playlistTitle").value;
-	const missionCount = document.querySelector("input#missionCount").value;
 	const playlistCount = document.querySelector("#playlistCount").value;
 	const includeCutscenes = document.querySelector("input#includeCutscenes").checked;
 	const allowDupes = document.querySelector("input#allowDupes").checked;
@@ -51,7 +50,7 @@ function generatePlaylists() {
 		var maplist = maplistBase.cloneNode();
 		var playlist = playlistBase.cloneNode();
 
-		var chosenMissions = listMissions(missionCount);
+		const chosenMissions = listMissions();
 
 		console.log("Missions for playlist " + i + " shuffled");
 		console.log(chosenMissions);

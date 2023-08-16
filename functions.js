@@ -14,8 +14,9 @@ function shuffleMissionList(missionList) {
 	return missionList;
 }
 
-function listMissions(count) {
+function listMissions() {
 	var missionList = [];
+	var missionCount = document.querySelector("input#missionCount").value;
 	for (const _GAME in GAMES) {
 		if (document.querySelector("input#" + _GAME).checked) {
 			missionList = missionList.concat(GAMES[_GAME].map(m => _GAME + "_" + m))
@@ -25,14 +26,14 @@ function listMissions(count) {
 		}
 	}
 	if (document.querySelector("input#allowDupes").checked) {
-		var n = document.querySelector("input#missionCount").value - 1;
+		var n = missionCount - 1;
 		const singleMissionList = missionList;
 		while (n) {
 			missionList = missionList.concat(singleMissionList);
 			n--;
 		}
 	}
-	return shuffleMissionList(missionList).slice(0, count);
+	return shuffleMissionList(missionList).slice(0, missionCount);
 }
 
 function insertSkullControls() {
