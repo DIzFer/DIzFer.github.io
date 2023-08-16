@@ -77,6 +77,42 @@ const GAMES = {
 	]
 };
 
+const BOSS_MISSIONS = {
+	"halo1": [
+		"assault_on_the_control_room",
+		"the_library",
+		"two_betrayals"
+	],
+	"halo2": [
+		"the_oracle",
+		"delta_halo",
+		"regret",
+		"high_charity",
+		"the_great_journey"
+	],
+	"halo3": [
+		"the_ark", // 1
+		"the_covenant", // 1
+		"halo" //
+	],
+	"halo3odst": [
+		"nmpd_hq",
+		"data_hive",
+		"coastal_highway" // 1
+	],
+	"haloreach": [
+		"tip_of_the_spear",
+		"long_night_of_solace",
+		"the_pillar_of_autumn"
+	],
+	"halo4": [
+		"forerunner",
+		"infinity", // 2
+		"composer",
+		"midnight"
+	]
+};
+
 const CUTSCENES = {
 	"halo2": [
 		"the_heretic",
