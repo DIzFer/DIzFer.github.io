@@ -72,7 +72,11 @@ function generatePlaylists(mode = null) {
 				chosenMissions.splice(m, 0, "BOSS");
 			}
 			for (let m = 0; m <= chosenMissions.length; m += 2) {
-				chosenMissions.splice(m, 0, "halo3odst_mombasa_streets_" + Math.floor(Math.random()*7));
+				if (m == 0) {
+					chosenMissions.splice(m, 0, "halo3odst_mombasa_streets_0");
+				} else {
+					chosenMissions.splice(m, 0, "halo3odst_mombasa_streets_" + Math.ceil(Math.random()*6));
+				}
 			}
 			console.log("Missions for roguelike playlist " + p + " shuffled");
 		} else {
