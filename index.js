@@ -130,15 +130,17 @@ function generatePlaylists(mode = null) {
 					switch (globalDifficulty) {
 						case "_campaign_difficulty_level_easy":
 							missionElement.setAttribute("diffID", "_campaign_difficulty_level_normal");
-							skullsToRemove.push(previousSkullsArray[Math.floor(Math.random() * (previousSkullsArray.length + 1))]);
 							break;
 						case "_campaign_difficulty_level_normal":
 							missionElement.setAttribute("diffID", "_campaign_difficulty_level_hard");
 							skullsToRemove.push(previousSkullsArray[Math.floor(Math.random() * (previousSkullsArray.length + 1))]);
-							skullsToRemove.push(previousSkullsArray[Math.floor(Math.random() * (previousSkullsArray.length + 1))]);
 							break;
 						case "_campaign_difficulty_level_hard":
 							missionElement.setAttribute("diffID", "_campaign_difficulty_level_impossible");
+							skullsToRemove.push(previousSkullsArray[Math.floor(Math.random() * (previousSkullsArray.length + 1))]);
+							skullsToRemove.push(previousSkullsArray[Math.floor(Math.random() * (previousSkullsArray.length + 1))]);
+							break;
+						case "_campaign_difficulty_level_hard":
 							skullsToRemove.push(previousSkullsArray[Math.floor(Math.random() * (previousSkullsArray.length + 1))]);
 							skullsToRemove.push(previousSkullsArray[Math.floor(Math.random() * (previousSkullsArray.length + 1))]);
 							skullsToRemove.push(previousSkullsArray[Math.floor(Math.random() * (previousSkullsArray.length + 1))]);
