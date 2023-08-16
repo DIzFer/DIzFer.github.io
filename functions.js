@@ -104,6 +104,7 @@ function prepareXML(xmldata) {
 
 function setupPlaylistDescription(settings) {
 	var playlistDescriptionArray = [];
+	settings.mode ? playlistDescriptionArray.push(HUMANIZER_OBJECT[settings.mode]) : null;
 	settings.h1 ? playlistDescriptionArray.push(HUMANIZER_OBJECT["halo1"]) : null;
 	settings.h2 ? playlistDescriptionArray.push(HUMANIZER_OBJECT["halo3"]) : null;
 	settings.h3 ? playlistDescriptionArray.push(HUMANIZER_OBJECT["halo3"]) : null;
@@ -112,7 +113,9 @@ function setupPlaylistDescription(settings) {
 	settings.h4 ? playlistDescriptionArray.push(HUMANIZER_OBJECT["halo4"]) : null;
 	settings.includeCutscenes ? playlistDescriptionArray.push(HUMANIZER_OBJECT["cutscenes"]) : null;
 	playlistDescriptionArray.push(settings.allowDupes ? HUMANIZER_OBJECT["allowDupes"] : HUMANIZER_OBJECT["noDupes"]);
-	playlistDescriptionArray.push(HUMANIZER_OBJECT[settings.skullMode]);
+	if (settings.mode == null) {
+		playlistDescriptionArray.push(HUMANIZER_OBJECT[settings.skullMode]);
+	};
 	console.log(playlistDescriptionArray);
 	return playlistDescriptionArray;
 

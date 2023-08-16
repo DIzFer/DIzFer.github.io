@@ -223,5 +223,6 @@ const HUMANIZER_OBJECT = {
 	"noSkulls": "No skulls",
 	"randomSkulls": "Random skulls",
 	"incrementalSkulls": "Incremental skulls",
-	"fixedSkulls": "Fixed skulls"
+	"fixedSkulls": "Fixed skulls",
+	"rogue": "Roguelike mode"
 }
