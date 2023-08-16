@@ -101,3 +101,19 @@ function prepareXML(xmldata) {
 	}
 	return xmltext;
 }
+
+function setupPlaylistDescription(settings) {
+	var playlistDescriptionArray = [];
+	settings.h1 ? playlistDescriptionArray.push(HUMANIZER_OBJECT["halo1"]) : null;
+	settings.h2 ? playlistDescriptionArray.push(HUMANIZER_OBJECT["halo3"]) : null;
+	settings.h3 ? playlistDescriptionArray.push(HUMANIZER_OBJECT["halo3"]) : null;
+	settings.odst ? playlistDescriptionArray.push(HUMANIZER_OBJECT["halo3odst"]) : null;
+	settings.reach ? playlistDescriptionArray.push(HUMANIZER_OBJECT["haloreach"]) : null;
+	settings.h4 ? playlistDescriptionArray.push(HUMANIZER_OBJECT["halo4"]) : null;
+	settings.includeCutscenes ? playlistDescriptionArray.push(HUMANIZER_OBJECT["cutscenes"]) : null;
+	playlistDescriptionArray.push(settings.allowDupes ? HUMANIZER_OBJECT["allowDupes"] : HUMANIZER_OBJECT["noDupes"]);
+	playlistDescriptionArray.push(HUMANIZER_OBJECT[settings.skullMode]);
+	console.log(playlistDescriptionArray);
+	return playlistDescriptionArray;
+
+}

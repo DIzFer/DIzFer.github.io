@@ -31,18 +31,22 @@ function generatePlaylists() {
 	const date = new Date();
 	const playlistIDBase = date.toISOString();
 
-	var playlistDescriptionArray = [];
-	h1 ? playlistDescriptionArray.push(HUMANIZER_OBJECT["halo1"]) : null;
-	h2 ? playlistDescriptionArray.push(HUMANIZER_OBJECT["halo3"]) : null;
-	h3 ? playlistDescriptionArray.push(HUMANIZER_OBJECT["halo3"]) : null;
-	odst ? playlistDescriptionArray.push(HUMANIZER_OBJECT["halo3odst"]) : null;
-	reach ? playlistDescriptionArray.push(HUMANIZER_OBJECT["haloreach"]) : null;
-	h4 ? playlistDescriptionArray.push(HUMANIZER_OBJECT["halo4"]) : null;
-	includeCutscenes ? playlistDescriptionArray.push(HUMANIZER_OBJECT["cutscenes"]) : null;
-	playlistDescriptionArray.push(allowDupes ? HUMANIZER_OBJECT["allowDupes"] : HUMANIZER_OBJECT["noDupes"]);
-	playlistDescriptionArray.push(HUMANIZER_OBJECT[skullMode]);
-	console.log(playlistDescriptionArray);
-
+	const playlistDescriptionArray = setupPlaylistDescription({
+		"mode": null,
+		"missionCount": missionCount,
+		"playlistCount": playlistCount,
+		"includeCutscenes": includeCutscenes,
+		"allowDupes": allowDupes,
+		"globalDifficulty": globalDifficulty,
+		"skullMode": skullMode,
+		"h1": h1,
+		"h1": h1,
+		"h2": h2,
+		"h3": h3,
+		"odst": odst,
+		"reach": reach,
+		"h4": h4,
+	});
 
 	for (let i = 1; i <= playlistCount; i++) {
 		console.log("Beginning standard generation");
@@ -136,17 +140,22 @@ function generateMombasaRogue() {
 	const date = new Date();
 	const playlistIDBase = date.toISOString();
 
-	var playlistDescriptionArray = [];
-	h1 ? playlistDescriptionArray.push(HUMANIZER_OBJECT["halo1"]) : null;
-	h2 ? playlistDescriptionArray.push(HUMANIZER_OBJECT["halo3"]) : null;
-	h3 ? playlistDescriptionArray.push(HUMANIZER_OBJECT["halo3"]) : null;
-	odst ? playlistDescriptionArray.push(HUMANIZER_OBJECT["halo3odst"]) : null;
-	reach ? playlistDescriptionArray.push(HUMANIZER_OBJECT["haloreach"]) : null;
-	h4 ? playlistDescriptionArray.push(HUMANIZER_OBJECT["halo4"]) : null;
-	includeCutscenes ? playlistDescriptionArray.push(HUMANIZER_OBJECT["cutscenes"]) : null;
-	playlistDescriptionArray.push(allowDupes ? HUMANIZER_OBJECT["allowDupes"] : HUMANIZER_OBJECT["noDupes"]);
-	playlistDescriptionArray.push(HUMANIZER_OBJECT[skullMode]);
-	console.log(playlistDescriptionArray);
+	const playlistDescriptionArray = setupPlaylistDescription({
+		"mode": "rogue",
+		"missionCount": missionCount,
+		"playlistCount": playlistCount,
+		"includeCutscenes": includeCutscenes,
+		"allowDupes": allowDupes,
+		"globalDifficulty": globalDifficulty,
+		"skullMode": skullMode,
+		"h1": h1,
+		"h1": h1,
+		"h2": h2,
+		"h3": h3,
+		"odst": odst,
+		"reach": reach,
+		"h4": h4,
+	});
 
 	console.log("Beginning Like a Rogue in Mombasa");
 
