@@ -63,6 +63,7 @@ fieldset, .column {
 }
 .skullContainer > label:first-of-type {
 	grid-area: span 1 / span 2;
+	justify-self: center;
 }
 #MISC_SKULLS {
 	grid-area: span 1 / span 2;
