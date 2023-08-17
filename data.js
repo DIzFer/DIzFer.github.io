@@ -106,7 +106,6 @@ const BOSS_MISSIONS = {
 		"the_pillar_of_autumn"
 	],
 	"halo4": [
-		"forerunner",
 		"infinity", // 2
 		"composer",
 		"midnight"
