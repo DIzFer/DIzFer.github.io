@@ -124,6 +124,14 @@ function generatePlaylists(mode = null) {
 						case "_map_id_halo4_infinity":
 							missionElement.setAttribute("insertionpoint", 2);
 							break;
+						case "_map_id_halo2_regret":
+							var rocknroll = document.createElement("Skull");
+							rocknroll.id = "_skull_prophet_birthday_party";
+							rockList = missionElement.querySelector("SkullList");
+							if (rockList.querySelector("skull#_skull_prophet_birthday_party") === null) {
+								rockList.appendChild(rocknroll);
+							};
+							break;
 					}
 					let previousSkullsArray = Array.from(previousSkulls);
 					let skullsToRemove = [];
