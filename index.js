@@ -90,7 +90,7 @@ function generatePlaylists(mode = null) {
 			var missionElement = document.createElement("Map");
 			if (chosenMissions[m].startsWith("halo3odst_mombasa_streets")) {
 				missionElement.setAttribute("id", "_map_id_halo3odst_mombasa_streets");
-				missionElement.setAttribute("insertionpoint", chosenMissions[m].at(-1));
+				missionElement.setAttribute("insertionpoint", chosenMissions[m].slice(-1));
 				if (mode == "rogue" && m !== 0) {
 					var availableSkulls = shuffleList(Array.from(listSkulls(false, new Set(previousSkulls))));
 					previousSkulls.add(availableSkulls[0]);
