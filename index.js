@@ -101,12 +101,15 @@ function generatePlaylists(mode = null) {
 			missionElement.setAttribute("diffID", globalDifficulty)
 			if (skullMode !== "noSkulls" || mode == "rogue") {
 				var skullList = document.createElement("SkullList");
+				var skullListModified = false;
+				var difficultyModified = false;
 			}
 			if (mode == "rogue") {
 				previousSkulls.forEach(skull => {
 					var skullElement = document.createElement("Skull");
 					skullElement.id = "_skull_" + skull;
 					skullList.appendChild(skullElement);
+					skullListModified = true;
 				})
 				missionElement.appendChild(skullList);
 				if (chosenMissions[m].endsWith("BOSS")) {
@@ -138,13 +141,16 @@ function generatePlaylists(mode = null) {
 					switch (globalDifficulty) {
 						case "_campaign_difficulty_level_easy":
 							missionElement.setAttribute("diffID", "_campaign_difficulty_level_normal");
+							difficultyModified = true;
 							break;
 						case "_campaign_difficulty_level_normal":
 							missionElement.setAttribute("diffID", "_campaign_difficulty_level_hard");
+							difficultyModified = true;
 							skullsToRemove.push(previousSkullsArray[randomIntRange(previousSkullsArray.length)]);
 							break;
 						case "_campaign_difficulty_level_hard":
 							missionElement.setAttribute("diffID", "_campaign_difficulty_level_impossible");
+							difficultyModified = true;
 							skullsToRemove.push(previousSkullsArray[randomIntRange(previousSkullsArray.length)]);
 							skullsToRemove.push(previousSkullsArray[randomIntRange(previousSkullsArray.length)]);
 							break;
@@ -163,6 +169,7 @@ function generatePlaylists(mode = null) {
 							var skullElement = document.createElement("Skull");
 							skullElement.id = "_skull_" + skull;
 							skullList.appendChild(skullElement);
+							skullListModified = true;
 						})
 						missionElement.appendChild(skullList);
 						break;
@@ -172,6 +179,7 @@ function generatePlaylists(mode = null) {
 							var skullElement = document.createElement("Skull");
 							skullElement.id = "_skull_" + skull;
 							skullList.appendChild(skullElement);
+							skullListModified = true;
 						})
 						missionElement.appendChild(skullList);
 						break;
@@ -185,6 +193,24 @@ function generatePlaylists(mode = null) {
 						break;
 				}
 				skullList ? console.log(skullList.childElementCount + " skulls for mission " + chosenMissions[m].replaceAll("_map_id_", "")) : null;
+			}
+			if (m !== 0
+				&& chosenMissions[m - 1].slice(4, 6) == chosenMissions[m].slice(4, 6)
+				&& (skullListModified || difficultyModified)) {
+				console.log(chosenMissions[m].split("_")[0]);
+				var cutsceneFix = document.createElement("Map");
+				var availableCutscenes = [];
+				for (const game of getGames(CUTSCENES)) {
+					if (game !== chosenMissions[m].split("_")[0]) {
+						availableCutscenes.push(CUTSCENES[game].map(m => game + "_" + m));
+					}
+				}
+				var cutscene = availableCutscenes.flat()[randomIntRange(availableCutscenes.length)];
+				cutsceneFix.setAttribute("id", "_map_id_" + cutscene);
+				cutsceneFix.setAttribute("diffID", globalDifficulty)
+				maplist.appendChild(cutsceneFix);
+				console.log("CUTSCENE TIME");
+				console.log(cutscene);
 			}
 				maplist.appendChild(missionElement);
 		}

@@ -121,6 +121,7 @@
 			<p>Tweak settings, press [Generate]<!-- TODO: there's markup for this isn't it-->, and download the file. You'll need to replace the default file, so be sure to either make a backup or remember to use the "Verify integrity of game files" function in Steam.<!-- TODO: double check how to do this with xbox launcher--></p>
 			<p>You can generate multiple sets of playlists with different settings and names; until you refresh the page, it all gets added to the same <code>missionplaylistdb.xml</code>.</p>
 			<p>Additionally, although I've not yet tested this, you should be able to play these in co-op without anti-cheat as long as all participants are using the exact same file.</p>
+			<p>A couple of warnings: It seems like stuff gets a bit weird if the same mission appears multiple times in a row. If it happens, for now, save and quit, then reload. Additionally, you should always choose at least two games if you want skulls or Like a Rogue In Mombasa, otherwise the playlist will be slightly hecked.</p>
 
 			<h2>What do the settings mean?</h2>
 			<p><ul>
@@ -166,13 +167,6 @@
 				<li>Rally points, maybe?</li>
 				<li>Generate a missionplaylistdb that doesn't clobber the default playlists. Not really hard, just want to keep the xml files clean and readable until everything works 100%.</li>
 			</ul>
-			<p>There's also a couple of MCC bugs that I'd need to work around, such as:</p>
-			<ul>
-				<li>While having different skull sets per mission works, the game only notices when changing games or after saving and quitting.</li>
-				<li>It seems like stuff gets a bit weird if the same mission appears multiple times in a row.</li>
-				<li>Unless something's changed, Scales' randomizer also warns about changing difficulties.</li>
-			</ul>
-			<p>The workaround for all three of these is the same code-wise.</p>
 			<p>Additionally, there's a couple of longshot features that I'd like to add but aren't necessarily possible:</p>
 			<ul>
 				<li>Spartan Ops. These should behave exactly like a campaign mission.</li>
