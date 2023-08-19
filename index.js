@@ -75,7 +75,7 @@ function generatePlaylists(mode = null) {
 				if (m == 0) {
 					chosenMissions.splice(m, 0, "halo3odst_mombasa_streets_0");
 				} else {
-					chosenMissions.splice(m, 0, "halo3odst_mombasa_streets_" + Math.ceil(Math.random()*6));
+					chosenMissions.splice(m, 0, "halo3odst_mombasa_streets_" + randomIntRange(1, 6));
 				}
 			}
 			console.log("Missions for roguelike playlist " + p + " shuffled");
@@ -141,17 +141,17 @@ function generatePlaylists(mode = null) {
 							break;
 						case "_campaign_difficulty_level_normal":
 							missionElement.setAttribute("diffID", "_campaign_difficulty_level_hard");
-							skullsToRemove.push(previousSkullsArray[Math.floor(Math.random() * (previousSkullsArray.length + 1))]);
+							skullsToRemove.push(previousSkullsArray[randomIntRange(previousSkullsArray.length)]);
 							break;
 						case "_campaign_difficulty_level_hard":
 							missionElement.setAttribute("diffID", "_campaign_difficulty_level_impossible");
-							skullsToRemove.push(previousSkullsArray[Math.floor(Math.random() * (previousSkullsArray.length + 1))]);
-							skullsToRemove.push(previousSkullsArray[Math.floor(Math.random() * (previousSkullsArray.length + 1))]);
+							skullsToRemove.push(previousSkullsArray[randomIntRange(previousSkullsArray.length)]);
+							skullsToRemove.push(previousSkullsArray[randomIntRange(previousSkullsArray.length)]);
 							break;
 						case "_campaign_difficulty_level_hard":
-							skullsToRemove.push(previousSkullsArray[Math.floor(Math.random() * (previousSkullsArray.length + 1))]);
-							skullsToRemove.push(previousSkullsArray[Math.floor(Math.random() * (previousSkullsArray.length + 1))]);
-							skullsToRemove.push(previousSkullsArray[Math.floor(Math.random() * (previousSkullsArray.length + 1))]);
+							skullsToRemove.push(previousSkullsArray[randomIntRange(previousSkullsArray.length)]);
+							skullsToRemove.push(previousSkullsArray[randomIntRange(previousSkullsArray.length)]);
+							skullsToRemove.push(previousSkullsArray[randomIntRange(previousSkullsArray.length)]);
 							break;
 					}
 					skullsToRemove.forEach(s => previousSkulls.delete(s));
