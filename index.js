@@ -212,7 +212,7 @@ function generatePlaylists(mode = null) {
 				console.log("CUTSCENE TIME");
 				console.log(cutscene);
 			}
-				maplist.appendChild(missionElement);
+			maplist.appendChild(missionElement);
 		}
 		playlist.appendChild(maplist);
 		playlist.setAttribute("id", playlistIDBase + "-" + p);
