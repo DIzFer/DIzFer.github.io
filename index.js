@@ -71,7 +71,7 @@ function generatePlaylists(mode = null) {
 			for (let m = missionCount; m <= chosenMissions.length; m += missionCount + 1) {
 				chosenMissions.splice(m, 0, "BOSS");
 			}
-			for (let m = 0; m <= chosenMissions.length; m += 2) {
+			for (let m = 0; m < chosenMissions.length; m += 2) {
 				if (m == 0) {
 					chosenMissions.splice(m, 0, "halo3odst_mombasa_streets_0");
 				} else {
