@@ -39,19 +39,19 @@ function listMissions(specialMode = null) {
 	if (specialMode == "rogue") {
 		missionCount *= playlistCount;
 	}
-	for (const _GAME of getGames(GAMES)) {
-		missionList = missionList.concat(GAMES[_GAME].flatMap(m => {
-			if ((_GAME == "halo3odst" && specialMode == "rogue" && m.startsWith("mombasa_streets")) || BOSS_MISSIONS[_GAME].includes(m)) {
+	for (const GAME of getGames(MISSIONS)) {
+		missionList = missionList.concat(MISSIONS[GAME].flatMap(m => {
+			if ((GAME == "halo3odst" && specialMode == "rogue" && m.startsWith("mombasa_streets")) || BOSS_MISSIONS[GAME].includes(m)) {
 				return []
 			} else {
-				return _GAME + "_" + m
+				return GAME + "_" + m
 			}
 		}))
 		if (specialMode == "rogue") {
-			bossList = bossList.concat(BOSS_MISSIONS[_GAME].map(m => _GAME + "_" + m));
+			bossList = bossList.concat(BOSS_MISSIONS[GAME].map(m => GAME + "_" + m));
 		}
-		if (document.querySelector("input#includeCutscenes").checked && _GAME !== "halo1" ) {
-			missionList = missionList.concat(CUTSCENES[_GAME].map(m => _GAME + "_" + m))
+		if (document.querySelector("input#includeCutscenes").checked && GAME !== "halo1" ) {
+			missionList = missionList.concat(CUTSCENES[GAME].map(m => GAME + "_" + m))
 		}
 	}
 	if (document.querySelector("input#allowDupes").checked) {

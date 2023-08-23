@@ -1,4 +1,4 @@
-const GAMES = {
+const MISSIONS = {
 	"halo1": [
 		"pillar_of_autumn",
 		"halo",

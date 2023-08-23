@@ -7,8 +7,8 @@ const maplistBase = document.createElement("MapList");
 insertSkullControls();
 readSettings();
 
-for (const _GAME in GAMES) {
-	missionplaylistdb.documentElement.appendChild(document.createElement(_GAME));
+for (const GAME in MISSIONS) {
+	missionplaylistdb.documentElement.appendChild(document.createElement(GAME));
 }
 
 function generatePlaylists(mode = null) {
@@ -65,38 +65,38 @@ function generatePlaylists(mode = null) {
 
 		if (mode == "rogue") {
 			const lmOut = listMissions("rogue");
-			var chosenMissions = lmOut[0];
-			var bossMissions = lmOut[1];
+			var missions = lmOut[0];
+			var bosses = lmOut[1];
 
-			for (let m = missionCount; m <= chosenMissions.length; m += missionCount + 1) {
-				chosenMissions.splice(m, 0, "BOSS");
+			for (let m = missionCount; m <= missions.length; m += missionCount + 1) {
+				missions.splice(m, 0, "BOSS");
 			}
-			for (let m = 0; m < chosenMissions.length; m += 2) {
+			for (let m = 0; m < missions.length; m += 2) {
 				if (m == 0) {
-					chosenMissions.splice(m, 0, "halo3odst_mombasa_streets_0");
+					missions.splice(m, 0, "halo3odst_mombasa_streets_0");
 				} else {
-					chosenMissions.splice(m, 0, "halo3odst_mombasa_streets_" + randomIntRange(1, 6));
+					missions.splice(m, 0, "halo3odst_mombasa_streets_" + randomIntRange(1, 6));
 				}
 			}
 			console.log("Missions for roguelike playlist " + p + " shuffled");
 		} else {
-			var chosenMissions = listMissions();
+			var missions = listMissions();
 			console.log("Missions for playlist " + p + " shuffled");
 		}
-		console.log(chosenMissions);
+		console.log(missions);
 
 		var previousSkulls = new Set();
-		for (m = 0; m <= chosenMissions.length - 1; m++) {
+		for (m = 0; m <= missions.length - 1; m++) {
 			var missionElement = document.createElement("Map");
-			if (chosenMissions[m].startsWith("halo3odst_mombasa_streets")) {
+			if (missions[m].startsWith("halo3odst_mombasa_streets")) {
 				missionElement.setAttribute("id", "_map_id_halo3odst_mombasa_streets");
-				missionElement.setAttribute("insertionpoint", chosenMissions[m].slice(-1));
+				missionElement.setAttribute("insertionpoint", missions[m].slice(-1));
 				if (mode == "rogue" && m !== 0) {
 					var availableSkulls = shuffleList(Array.from(listSkulls(false, new Set(previousSkulls))));
 					previousSkulls.add(availableSkulls[0]);
 				}
 			} else {
-				missionElement.setAttribute("id", "_map_id_" + chosenMissions[m]);
+				missionElement.setAttribute("id", "_map_id_" + missions[m]);
 			}
 			missionElement.setAttribute("diffID", globalDifficulty)
 			if (skullMode !== "noSkulls" || mode == "rogue") {
@@ -112,8 +112,8 @@ function generatePlaylists(mode = null) {
 					skullListModified = true;
 				})
 				missionElement.appendChild(skullList);
-				if (chosenMissions[m].endsWith("BOSS")) {
-					missionElement.setAttribute("id", "_map_id_" + bossMissions.pop());
+				if (missions[m].endsWith("BOSS")) {
+					missionElement.setAttribute("id", "_map_id_" + bosses.pop());
 					switch (missionElement.getAttribute("id")) {
 						case "_map_id_halo3_the_ark":
 							missionElement.setAttribute("insertionpoint", 1);
@@ -192,16 +192,16 @@ function generatePlaylists(mode = null) {
 						missionElement.appendChild(skullList);
 						break;
 				}
-				skullList ? console.log(skullList.childElementCount + " skulls for mission " + chosenMissions[m].replaceAll("_map_id_", "")) : null;
+				skullList ? console.log(skullList.childElementCount + " skulls for mission " + missions[m].replaceAll("_map_id_", "")) : null;
 			}
 			if (m !== 0
-				&& chosenMissions[m - 1].slice(4, 6) == chosenMissions[m].slice(4, 6)
+				&& missions[m - 1].slice(4, 6) == missions[m].slice(4, 6)
 				&& (skullListModified || difficultyModified)) {
-				console.log(chosenMissions[m].split("_")[0]);
+				console.log(missions[m].split("_")[0]);
 				var cutsceneFix = document.createElement("Map");
 				var availableCutscenes = [];
 				for (const game of getGames(CUTSCENES)) {
-					if (game !== chosenMissions[m].split("_")[0]) {
+					if (game !== missions[m].split("_")[0]) {
 						availableCutscenes.push(CUTSCENES[game].map(m => game + "_" + m));
 					}
 				}
