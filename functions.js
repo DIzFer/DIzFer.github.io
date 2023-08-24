@@ -35,7 +35,7 @@ function listMissions(specialMode = null) {
 	var missionList = [];
 	var bossList = [];
 	const playlistCount = document.querySelector("input#playlistCount").value;
-	var missionCount = document.querySelector("input#missionCount").value;
+	const missionCount = document.querySelector("input#missionCount").value;
 	const globalDifficulty = document.querySelector("input[name=difficulty]:checked").value;
 	for (const GAME of getGames(MISSIONS)) {
 		missionList = missionList.concat(MISSIONS[GAME].flatMap(m => {
