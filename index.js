@@ -103,7 +103,7 @@ function generatePlaylists(mode = null) {
 									skullMove(missions[m - 1].skulls, availableSkulls);
 									skullMove(missions[m - 1].skulls, availableSkulls);
 									break;
-								case "_campaign_difficulty_level_hard":
+								case "_campaign_difficulty_level_impossible":
 									skullMove(missions[m - 1].skulls, availableSkulls);
 									skullMove(missions[m - 1].skulls, availableSkulls);
 									skullMove(missions[m - 1].skulls, availableSkulls);
