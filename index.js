@@ -67,6 +67,7 @@ function generatePlaylists(mode = null) {
 			const lmOut = listMissions("rogue");
 			var missions = shuffleList(lmOut[0]).slice(0, missionCount * playlistCount); // TODO: force playlistCount === 22?
 			var availableSkulls = listSkulls(false);
+			availableSkulls.delete("prophet_birthday_party");
 			var bosses = lmOut[1];
 
 			for (let m = missionCount; m <= missions.length; m += missionCount + 1) {
