@@ -65,155 +65,118 @@ function generatePlaylists(mode = null) {
 
 		if (mode == "rogue") {
 			const lmOut = listMissions("rogue");
-			var missions = lmOut[0];
+			var missions = shuffleList(lmOut[0]).slice(0, missionCount * playlistCount); // TODO: force playlistCount === 22?
+			var availableSkulls = listSkulls(false);
 			var bosses = lmOut[1];
 
 			for (let m = missionCount; m <= missions.length; m += missionCount + 1) {
-				missions.splice(m, 0, "BOSS");
+				let chosenBoss = structuredClone(bosses[0]);
+				bosses.shift();
+				chosenBoss.boss = true;
+				missions.splice(m, 0, chosenBoss);
 			}
-			for (let m = 0; m < missions.length; m += 2) {
-				if (m == 0) {
-					missions.splice(m, 0, "halo3odst_mombasa_streets_0");
-				} else {
-					missions.splice(m, 0, "halo3odst_mombasa_streets_" + randomIntRange(1, 6));
+			for (let m = 0; m < missions.length; m += 2) { // insert mombasa_streets
+				missions.splice(m, 0, structuredClone(MISSIONS.halo3odst[0]));
+				missions[m].game = "halo3odst";
+				missions[m].skulls = new Set();
+				if (m !== 0) {
+					missions[m].insertionpoint = randomIntRange(1, 6);
 				}
 			}
 			console.log("Missions for roguelike playlist " + p + " shuffled");
 		} else {
-			var missions = listMissions();
+			var missions = shuffleList(listMissions()).slice(0, missionCount);
 			console.log("Missions for playlist " + p + " shuffled");
 		}
-		console.log(missions);
-
-		var previousSkulls = new Set();
-		for (m = 0; m <= missions.length - 1; m++) {
-			var missionElement = document.createElement("Map");
-			if (missions[m].startsWith("halo3odst_mombasa_streets")) {
-				missionElement.setAttribute("id", "_map_id_halo3odst_mombasa_streets");
-				missionElement.setAttribute("insertionpoint", missions[m].slice(-1));
-				if (mode == "rogue" && m !== 0) {
-					var availableSkulls = shuffleList(Array.from(listSkulls(false, new Set(previousSkulls))));
-					previousSkulls.add(availableSkulls[0]);
-				}
-			} else {
-				missionElement.setAttribute("id", "_map_id_" + missions[m]);
-			}
-			missionElement.setAttribute("diffID", globalDifficulty)
-			if (skullMode !== "noSkulls" || mode == "rogue") {
-				var skullList = document.createElement("SkullList");
-				var skullListModified = false;
-				var difficultyModified = false;
-			}
+		for (m = 0; m <= missions.length - 1; m++) { // MISSION LOOP BEGIN
 			if (mode == "rogue") {
-				previousSkulls.forEach(skull => {
-					var skullElement = document.createElement("Skull");
-					skullElement.id = "_skull_" + skull;
-					skullList.appendChild(skullElement);
-					skullListModified = true;
-				})
-				missionElement.appendChild(skullList);
-				if (missions[m].endsWith("BOSS")) {
-					missionElement.setAttribute("id", "_map_id_" + bosses.pop());
-					switch (missionElement.getAttribute("id")) {
-						case "_map_id_halo3_the_ark":
-							missionElement.setAttribute("insertionpoint", 1);
-							break;
-						case "_map_id_halo3_the_covenant":
-							missionElement.setAttribute("insertionpoint", 1);
-							break;
-						case "_map_id_halo3odst_coastal_highway":
-							missionElement.setAttribute("insertionpoint", 1);
-							break;
-						case "_map_id_halo4_infinity":
-							missionElement.setAttribute("insertionpoint", 2);
-							break;
-						case "_map_id_halo2_regret":
-							var rocknroll = document.createElement("Skull");
-							rocknroll.id = "_skull_prophet_birthday_party";
-							rockList = missionElement.querySelector("SkullList");
-							if (rockList.querySelector("skull#_skull_prophet_birthday_party") === null) {
-								rockList.appendChild(rocknroll);
-							};
-							break;
+				if (m > 1) {
+					missions[m].skulls = new Set(missions[m - 1].skulls);
+					if (missions[m].id === "mombasa_streets") {
+						if (missions[m - 1].boss) {
+							switch (globalDifficulty) {
+								case "_campaign_difficulty_level_normal":
+									skullMove(missions[m - 1].skulls, availableSkulls);
+									break;
+								case "_campaign_difficulty_level_hard":
+									skullMove(missions[m - 1].skulls, availableSkulls);
+									skullMove(missions[m - 1].skulls, availableSkulls);
+									break;
+								case "_campaign_difficulty_level_hard":
+									skullMove(missions[m - 1].skulls, availableSkulls);
+									skullMove(missions[m - 1].skulls, availableSkulls);
+									skullMove(missions[m - 1].skulls, availableSkulls);
+									break;
+							}
+						} else {
+							skullMove(availableSkulls, missions[m].skulls);
+						}
 					}
-					let previousSkullsArray = Array.from(previousSkulls);
-					let skullsToRemove = [];
-					switch (globalDifficulty) {
-						case "_campaign_difficulty_level_easy":
-							missionElement.setAttribute("diffID", "_campaign_difficulty_level_normal");
-							difficultyModified = true;
-							break;
-						case "_campaign_difficulty_level_normal":
-							missionElement.setAttribute("diffID", "_campaign_difficulty_level_hard");
-							difficultyModified = true;
-							skullsToRemove.push(previousSkullsArray[randomIntRange(previousSkullsArray.length)]);
-							break;
-						case "_campaign_difficulty_level_hard":
-							missionElement.setAttribute("diffID", "_campaign_difficulty_level_impossible");
-							difficultyModified = true;
-							skullsToRemove.push(previousSkullsArray[randomIntRange(previousSkullsArray.length)]);
-							skullsToRemove.push(previousSkullsArray[randomIntRange(previousSkullsArray.length)]);
-							break;
-						case "_campaign_difficulty_level_hard":
-							skullsToRemove.push(previousSkullsArray[randomIntRange(previousSkullsArray.length)]);
-							skullsToRemove.push(previousSkullsArray[randomIntRange(previousSkullsArray.length)]);
-							skullsToRemove.push(previousSkullsArray[randomIntRange(previousSkullsArray.length)]);
-							break;
-					}
-					skullsToRemove.forEach(s => previousSkulls.delete(s));
+				}
+				if (missions[m].boss && missions[m].id == "regret") {
+					missions[m].skulls.add("prophet_birthday_party");
 				}
 			} else {
 				switch (skullMode) {
 					case "randomSkulls":
 						listSkulls(true).forEach(skull => {
-							var skullElement = document.createElement("Skull");
-							skullElement.id = "_skull_" + skull;
-							skullList.appendChild(skullElement);
-							skullListModified = true;
+							missions[m].skulls.add(skull);
 						})
-						missionElement.appendChild(skullList);
 						break;
 					case "incrementalSkulls":
-						listSkulls(true, previousSkulls).forEach(skull => {
-							previousSkulls.add(skull);
-							var skullElement = document.createElement("Skull");
-							skullElement.id = "_skull_" + skull;
-							skullList.appendChild(skullElement);
-							skullListModified = true;
-						})
-						missionElement.appendChild(skullList);
+						if (m > 1) {
+							listSkulls(true, missions[m - 1].skulls).forEach(skull => {
+								missions[m].skulls.add(skull);
+							})
+						}
 						break;
 					case "fixedSkulls":
 						listSkulls().forEach(skull => {
-							var skullElement = document.createElement("Skull");
-							skullElement.id = "_skull_" + skull;
-							skullList.appendChild(skullElement);
+							missions[m].skulls.add(skull);
 						})
-						missionElement.appendChild(skullList);
 						break;
 				}
-				skullList ? console.log(skullList.childElementCount + " skulls for mission " + missions[m].replaceAll("_map_id_", "")) : null;
 			}
-			if (m !== 0
-				&& missions[m - 1].slice(4, 6) == missions[m].slice(4, 6)
-				&& (skullListModified || difficultyModified)) {
-				console.log(missions[m].split("_")[0]);
-				var cutsceneFix = document.createElement("Map");
-				var availableCutscenes = [];
-				for (const game of getGames(CUTSCENES)) {
-					if (game !== missions[m].split("_")[0]) {
-						availableCutscenes.push(CUTSCENES[game].map(m => game + "_" + m));
-					}
-				}
-				var cutscene = availableCutscenes.flat()[randomIntRange(availableCutscenes.length)];
-				cutsceneFix.setAttribute("id", "_map_id_" + cutscene);
-				cutsceneFix.setAttribute("diffID", globalDifficulty)
-				maplist.appendChild(cutsceneFix);
-				console.log("CUTSCENE TIME");
-				console.log(cutscene);
+		} // MISSION LOOP END
+		console.log(missions);
+		for (m = 0; m <= missions.length - 1; m++) { // PARSE INTO XML AND CLEANUP
+			let missionElement = document.createElement("Map");
+			missionElement.id = "_map_id_" + missions[m].game + "_" + missions[m].id;
+			missionElement.setAttribute("diffID", missions[m].diffID);
+			typeof missions[m].insertionpoint === "number" ? missionElement.setAttribute("insertionpoint", missions[m].insertionpoint) : null;
+			if (missions[m].skulls.size >= 1) {
+				var skullList = document.createElement("SkullList");
+				missions[m].skulls.forEach(s => {
+					let skullElement = document.createElement("Skull");
+					skullElement.id = "_skull_" + s;
+					skullList.appendChild(skullElement);
+				})
+				missionElement.appendChild(skullList);
 			}
 			maplist.appendChild(missionElement);
-		}
+			if (m !== missions.length - 1
+				&& missions[m].game === missions[m + 1].game
+				&& typeof missions[m].skulls === typeof missions[m + 1].skulls
+				&& typeof missions[m].skulls !== "undefined"
+			) { // CUTSCENE CHECK
+				if (missions[m].diffID !== missions[m + 1].diffID
+					|| Array.from(missions[m].skulls).sort().toString() !== Array.from(missions[m + 1].skulls).sort().toString()
+				) {
+					console.log("CUTSCENE TIME");
+					let availableCutscenes = [];
+					for (const game of getGames(CUTSCENES)) {
+						if (game !== missions[m].game) {
+							availableCutscenes.push(CUTSCENES[game].map(m => game + "_" + m.id));
+						}
+					}
+					let cutscene = availableCutscenes.flat()[randomIntRange(availableCutscenes.length)];
+					let missionElement = document.createElement("Map");
+					missionElement.id = "_map_id_" + cutscene;
+					console.log(cutscene);
+					maplist.appendChild(missionElement);
+				}
+			}
+		} // END PARSE
 		playlist.appendChild(maplist);
 		playlist.setAttribute("id", playlistIDBase + "-" + p);
 		playlist.setAttribute("name", playlistTitle + " " + p);

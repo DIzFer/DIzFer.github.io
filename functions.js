@@ -36,22 +36,51 @@ function listMissions(specialMode = null) {
 	var bossList = [];
 	const playlistCount = document.querySelector("input#playlistCount").value;
 	var missionCount = document.querySelector("input#missionCount").value;
-	if (specialMode == "rogue") {
-		missionCount *= playlistCount;
-	}
+	const globalDifficulty = document.querySelector("input[name=difficulty]:checked").value;
 	for (const GAME of getGames(MISSIONS)) {
 		missionList = missionList.concat(MISSIONS[GAME].flatMap(m => {
-			if ((GAME == "halo3odst" && specialMode == "rogue" && m.startsWith("mombasa_streets")) || BOSS_MISSIONS[GAME].includes(m)) {
+			if ((GAME == "halo3odst" && specialMode == "rogue" && m.id === "mombasa_streets") || BOSS_MISSIONS[GAME].includes(m)) {
 				return []
 			} else {
-				return GAME + "_" + m
+				return {
+					id: m.id,
+					game: GAME,
+					diffID: globalDifficulty,
+					skulls: new Set()
+				}
 			}
 		}))
 		if (specialMode == "rogue") {
-			bossList = bossList.concat(BOSS_MISSIONS[GAME].map(m => GAME + "_" + m));
+			bossList = bossList.concat(BOSS_MISSIONS[GAME].map(m => {
+				var m = {
+					id: m.id,
+					game: GAME,
+					diffID: globalDifficulty,
+					skulls: new Set()
+				};
+				switch (globalDifficulty) {
+					case "_campaign_difficulty_level_easy":
+						m.diffID = "_campaign_difficulty_level_normal";
+						break;
+					case "_campaign_difficulty_level_normal":
+						m.diffID = "_campaign_difficulty_level_hard";
+						break;
+					case "_campaign_difficulty_level_hard":
+						m.diffID = "_campaign_difficulty_level_impossible";
+						break;
+				}
+				return m
+			}));
 		}
 		if (document.querySelector("input#includeCutscenes").checked && GAME !== "halo1" ) {
-			missionList = missionList.concat(CUTSCENES[GAME].map(m => GAME + "_" + m))
+			missionList = missionList.concat(CUTSCENES[GAME].map(m => {
+				return {
+					id: m.id,
+					game: GAME,
+					difficulty: globalDifficulty,
+					skulls: new Set()
+				}
+			}))
 		}
 	}
 	if (document.querySelector("input#allowDupes").checked) {
@@ -62,11 +91,10 @@ function listMissions(specialMode = null) {
 			n--;
 		}
 	}
-	const shuffledMissions = shuffleList(missionList).slice(0, missionCount);
 	if (specialMode == "rogue") {
-		return [shuffledMissions, (shuffleList(bossList).slice(0, playlistCount))];
+		return [missionList, shuffleList(bossList).slice(0, playlistCount)];
 	} else {
-		return shuffledMissions;
+		return missionList;
 	}
 }
 
@@ -86,8 +114,8 @@ function insertSkullControls() {
 	};
 }
 
-function listSkulls(random = false, prefill = new Set()) {
-	var skullsList = prefill;
+function listSkulls(random = false, prefill) {
+	var skullsList = new Set(prefill);
 	document.querySelectorAll(".skullContainer input").forEach(checkbox => {
 		if (checkbox.checked) {
 			if (random) {
@@ -129,4 +157,9 @@ function setupPlaylistDescription(settings) {
 	console.log(playlistDescriptionArray);
 	return playlistDescriptionArray;
 
+}
+function skullMove(originPool, destinationPool, missionPool) {
+	const skull = Array.from(originPool)[randomIntRange(originPool.size - 1)]
+	originPool.delete(skull);
+	destinationPool.add(skull);
 }

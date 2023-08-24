@@ -1,138 +1,138 @@
 const MISSIONS = {
 	"halo1": [
-		"pillar_of_autumn",
-		"halo",
-		"truth_and_reconciliation",
-		"silent_cartographer",
-		"assault_on_the_control_room",
-		"343_guilty_spark",
-		"the_library",
-		"two_betrayals",
-		"keyes",
-		"the_maw"
+		{id: "pillar_of_autumn"},
+		{id: "halo"},
+		{id: "truth_and_reconciliation"},
+		{id: "silent_cartographer"},
+		{id: "assault_on_the_control_room"},
+		{id: "343_guilty_spark"},
+		{id: "the_library"},
+		{id: "two_betrayals"},
+		{id: "keyes"},
+		{id: "the_maw"}
 	],
 	"halo2": [
-		"cairo_station",
-		"outskirts",
-		"metropolis",
-		"the_arbiter",
-		"the_oracle",
-		"delta_halo",
-		"regret",
-		"sacred_icon",
-		"quarantine_zone",
-		"gravemind",
-		"uprising",
-		"high_charity",
-		"the_great_journey"
+		{id: "cairo_station"},
+		{id: "outskirts"},
+		{id: "metropolis"},
+		{id: "the_arbiter"},
+		{id: "the_oracle"},
+		{id: "delta_halo"},
+		{id: "regret"},
+		{id: "sacred_icon"},
+		{id: "quarantine_zone"},
+		{id: "gravemind"},
+		{id: "uprising"},
+		{id: "high_charity"},
+		{id: "the_great_journey"}
 	],
 	"halo3": [
-		"sierra_117",
-		"crows_nest",
-		"tsavo_highway",
-		"the_storm",
-		"floodgate",
-		"the_ark",
-		"the_covenant",
-		"cortana",
-		"halo"
+		{id: "sierra_117"},
+		{id: "crows_nest"},
+		{id: "tsavo_highway"},
+		{id: "the_storm"},
+		{id: "floodgate"},
+		{id: "the_ark"},
+		{id: "the_covenant"},
+		{id: "cortana"},
+		{id: "halo"}
 	],
 	"halo3odst": [
-		"mombasa_streets_0",
-		"tayari_plaza",
-		"mombasa_streets_1",
-		"uplift_reserve",
-		"mombasa_streets_2",
-		"kizingo_boulevard",
-		"mombasa_streets_3",
-		"oni_alpha_site",
-		"mombasa_streets_4",
-		"nmpd_hq",
-		"mombasa_streets_5",
-		"kikowani_station",
-		"mombasa_streets_6",
-		"data_hive",
-		"coastal_highway"
+		{id: "mombasa_streets", insertionpoint: 0},
+		{id: "tayari_plaza"},
+		{id: "mombasa_streets", insertionpoint: 1},
+		{id: "uplift_reserve"},
+		{id: "mombasa_streets", insertionpoint: 2},
+		{id: "kizingo_boulevard"},
+		{id: "mombasa_streets", insertionpoint: 3},
+		{id: "oni_alpha_site"},
+		{id: "mombasa_streets", insertionpoint: 4},
+		{id: "nmpd_hq"},
+		{id: "mombasa_streets", insertionpoint: 5},
+		{id: "kikowani_station"},
+		{id: "mombasa_streets", insertionpoint: 6},
+		{id: "data_hive"},
+		{id: "coastal_highway"}
 	],
 	"haloreach": [
-		"winter_contingency",
-		"oni_sword_base",
-		"nightfall",
-		"tip_of_the_spear",
-		"long_night_of_solace",
-		"exodus",
-		"new_alexandria",
-		"the_package",
-		"the_pillar_of_autumn"
+		{id: "winter_contingency"},
+		{id: "oni_sword_base"},
+		{id: "nightfall"},
+		{id: "tip_of_the_spear"},
+		{id: "long_night_of_solace"},
+		{id: "exodus"},
+		{id: "new_alexandria"},
+		{id: "the_package"},
+		{id: "the_pillar_of_autumn"}
 	],
 	"halo4": [
-		"dawn",
-		"requiem",
-		"forerunner",
-		"infinity",
-		"reclaimer",
-		"shutdown",
-		"composer",
-		"midnight"
+		{id: "dawn"},
+		{id: "requiem"},
+		{id: "forerunner"},
+		{id: "infinity"},
+		{id: "reclaimer"},
+		{id: "shutdown"},
+		{id: "composer"},
+		{id: "midnight"}
 	]
 };
 
 const BOSS_MISSIONS = {
 	"halo1": [
-		"assault_on_the_control_room",
-		"the_library",
-		"two_betrayals"
+		{id: "assault_on_the_control_room"},
+		{id: "the_library"},
+		{id: "two_betrayals"}
 	],
 	"halo2": [
-		"the_oracle",
-		"delta_halo",
-		"regret",
-		"high_charity",
-		"the_great_journey"
+		{id: "the_oracle"},
+		{id: "delta_halo"},
+		{id: "regret"},
+		{id: "high_charity"},
+		{id: "the_great_journey"}
 	],
 	"halo3": [
-		"the_ark", // 1
-		"the_covenant", // 1
-		"halo" //
+		{id: "the_ark", insertionpoint: 1},
+		{id: "the_covenant", insertionpoint: 1},
+		{id: "halo"}
 	],
 	"halo3odst": [
-		"nmpd_hq",
-		"data_hive",
-		"coastal_highway" // 1
+		{id: "nmpd_hq"},
+		{id: "data_hive"},
+		{id: "coastal_highway", insertionpoint: 1}
 	],
 	"haloreach": [
-		"tip_of_the_spear",
-		"long_night_of_solace",
-		"the_pillar_of_autumn"
+		{id: "tip_of_the_spear"},
+		{id: "long_night_of_solace"},
+		{id: "the_pillar_of_autumn"}
 	],
 	"halo4": [
-		"infinity", // 2
-		"composer",
-		"midnight"
+		{id: "infinity", insertionpoint: 2},
+		{id: "composer"},
+		{id: "midnight"}
 	]
 };
 
 const CUTSCENES = {
 	"halo2": [
-		"the_heretic",
-		"the_armory"
+		{id: "the_heretic"},
+		{id: "the_armory"}
 	],
 	"halo3": [
-		"arrival",
-		"epilogue"
+		{id: "arrival"},
+		{id: "epilogue"}
 	],
 	"halo3odst": [
-		"prepare_to_drop",
-		"epilogue"
+		{id: "prepare_to_drop"},
+		{id: "epilogue"}
 	],
 	"haloreach": [
-		"noble_actual",
-		"the_pillar_of_autumn_credits",
-		"lone_wolf"
+		{id: "noble_actual"},
+		{id: "the_pillar_of_autumn_credits"},
+		{id: "lone_wolf"}
 	],
 	"halo4": [
-		"prologue",
-		"epilogue"
+		{id: "prologue"},
+		{id: "epilogue"}
 	]
 };
 
