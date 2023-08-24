@@ -170,11 +170,13 @@ function generatePlaylists(mode = null) {
 							availableCutscenes.push(CUTSCENES[game].map(m => game + "_" + m.id));
 						}
 					}
-					let cutscene = availableCutscenes.flat()[randomIntRange(availableCutscenes.length)];
-					let missionElement = document.createElement("Map");
-					missionElement.id = "_map_id_" + cutscene;
-					console.log(cutscene);
-					maplist.appendChild(missionElement);
+					if (availableCutscenes.length !== 0) {
+						let cutscene = availableCutscenes.flat()[randomIntRange(availableCutscenes.length)];
+						let missionElement = document.createElement("Map");
+						missionElement.id = "_map_id_" + cutscene;
+						console.log(cutscene);
+						maplist.appendChild(missionElement);
+					}
 				}
 			}
 		} // END PARSE
