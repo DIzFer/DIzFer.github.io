@@ -119,7 +119,7 @@ function listSkulls(random = false, prefill) {
 	document.querySelectorAll(".skullContainer input").forEach(checkbox => {
 		if (checkbox.checked) {
 			if (random) {
-				if (Math.random() < .2) {
+				if (Math.random() < .15) {
 					skullsList.add(checkbox.id);
 				}
 			} else {
